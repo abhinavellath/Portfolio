@@ -2,12 +2,13 @@ import LightRays from "../components/Background";
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import Home2 from "./Home2";
+import TechStack from "./TechStack";
 
 function Home() {
   return (
     <div className="relative w-full">
-      {/* Light rays background */}
-      <div className="pointer-events-none">
+      {/* Light rays fixed background */}
+      <div className="fixed top-0 left-0 w-full h-screen z-0 pointer-events-none">
         <LightRays
           raysOrigin="top-center"
           raysColor="#00ffff"
@@ -23,14 +24,15 @@ function Home() {
         />
       </div>
 
-      {/* Navbar */}
       <Navbar />
 
-      {/* Hero section */}
       <Hero className="relative z-10" />
 
-      {/* About section */}
       <Home2 />
+ 
+      <div className="relative z-10 bg-black">
+        <TechStack />
+      </div>
     </div>
   );
 }
