@@ -1,13 +1,21 @@
 import React from 'react';
 
-const Name = ({ firstName = 'Aneeka', lastName = 'S A' }) => {
+const Name = ({ name = 'Aneeka' }) => {
   return (
-    <div className="text-left">
-      <h1 className="text-6xl md:text-8xl font-bold text-white animate-slideUp">
-        {firstName} <span className="text-cyan-400">{lastName}</span>
-      </h1>
-      <p className="text-2xl md:text-3xl text-gray-300 mt-4 animate-slideUp animation-delay-200">
-        AWS DevOps Engineer
+    <div className="text-left space-y-4 h-full flex flex-col justify-center pt-60">
+      {/* Small intro */}
+      <p className="text-lg md:text-2xl text-white animate-slideUp font-['PT_Serif']">
+        Hey, I’m<span className="font-semibold text-4xl md:text-4xl pl-4 text-cyan-200">{name}</span>
+      </p>
+
+      {/* Role / skills */}
+      <p className="text-xl md:text-3xl text-gray-300 animate-slideUp animation-delay-200">
+        DevOps | AWS | Azure
+      </p>
+
+      {/* Description */}
+      <p className="text-2xl md:text-4xl lg:text-5xl text-gray-400 mt-4 max-w-3xl animate-slideUp animation-delay-400 leading-relaxed">
+        Turning Cloud Complexity into Seamless, Scalable Solutions with DevOps and AWS expertise.
       </p>
     </div>
   );

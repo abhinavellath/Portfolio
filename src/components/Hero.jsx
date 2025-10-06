@@ -1,15 +1,16 @@
 import React from 'react';
 import Name from './Name.jsx';
 
-const Hero = ({ className }) => { // Pass className as a prop
+const Hero = ({ className }) => { 
   return (
-    // Remove bg-gray-900, make background transparent
-    // Add the passed className for positioning
-    <section className={`w-full h-screen flex items-center relative ${className}`}>
-      {/* Container for left-aligned content with padding */}
-      <div className="flex flex-col justify-center h-full pl-16 md:pl-32">
+    <section className={`w-full h-screen flex flex-col relative pt-24 ${className}`}>
+      {/* Name section taking half the hero */}
+      <div className="flex flex-col justify-center h-1/2 pl-16 md:pl-32">
         <Name />
       </div>
+
+      {/* Optional bottom half can be empty or have other content */}
+      <div className="h-1/2"></div>
     </section>
   );
 };
