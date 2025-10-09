@@ -4,9 +4,9 @@ import Button from '../components/Button.jsx';
 const Home2 = () => {
   return (
     <section
-      id="about"
-      className="w-full min-h-screen flex items-center justify-center px-8 md:px-42 py-16"
-    >
+  id="about"
+  className="w-full min-h-screen flex items-center justify-center px-4 sm:px-8 md:px-16 lg:px-24 py-16"
+>
       <div className=" text-left text-white space-y-6 p-8 rounded-xl shadow-lg">
         <h2 className="text-4xl md:text-5xl font-bold text-cyan-200 text-center font-['PT_Serif'] ">
           About Me
