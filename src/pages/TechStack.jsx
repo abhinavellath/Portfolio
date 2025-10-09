@@ -28,12 +28,7 @@ const TechStack = () => {
         {/* Heading */}
         <h2 className="text-3xl md:text-5xl font-bold text-cyan-200 text-center font-['PT_Serif']">
           Tech Stack
-        </h2>
-
-        {/* Subtitle */}
-        <p className="text-lg md:text-xl text-gray-200 text-center">
-          Key areas of expertise:
-        </p>
+        </h2>   
 
         {/* Grid of Skills as buttons */}
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">

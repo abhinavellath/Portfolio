@@ -30,9 +30,7 @@ function Home() {
 
       <Home2 />
  
-      <div className="relative z-10 bg-black">
         <TechStack />
-      </div>
     </div>
   );
 }

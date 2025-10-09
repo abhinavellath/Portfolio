@@ -6,8 +6,21 @@
   0% { opacity: 0; transform: translateY(50px); }
   100% { opacity: 1; transform: translateY(0); }
 }
-.animate-slideUp { animation: slideUp 1s ease forwards; }
-.animation-delay-200 { animation-delay: 0.2s; }
+.animate-slideUp { 
+  animation: slideUp 1s ease forwards;
+  opacity: 0;
+ }
+
+@keyframes slideInLeft {
+  0% { opacity: 0; transform: translateX(-50px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+.animate-slideInLeft { animation: slideInLeft 1.2s ease-out forwards; }
+
+/* add delay helper */
+.animation-delay-200 { animation-delay: 1s; }
+.animation-delay-400 { animation-delay: 1.5s; }
+
 
 
 /* Reset some defaults */
