@@ -7,28 +7,34 @@ const Navbar = () => {
   const location = useLocation();
 
   const navItems = [
-    { label: "home", id: "hero" }, // Scroll to Hero section
-    { label: "about", id: "about" },
-    { label: "tech stack", id: "techstack" },
-    { label: "internships", id: "internships" },
-    { label: "projects", id: "projects" },
-    { label: "accomplishments", id: "accomplishments" },
-  ];
+  { label: "home", id: "hero" },
+  { label: "about", id: "about" },
+  { label: "tech stack", id: "techstack" },
+  { label: "experience", id: "/experience" },
+  { label: "projects", id: "/projects" }, // <-- route now handled correctly
+  { label: "accomplishments", id: "/accomplishments" }
+];
+
 
   const handleNavClick = (id) => {
+  // If the id starts with "/", treat it as a route
+  if (id.startsWith("/")) {
+    navigate(id);
+  } else {
     if (location.pathname !== "/") {
-      // Navigate to homepage first
       navigate("/", { replace: false });
       setTimeout(() => {
         const section = document.getElementById(id);
         section?.scrollIntoView({ behavior: "smooth" });
-      }, 100); // small delay for DOM rendering
+      }, 100);
     } else {
       const section = document.getElementById(id);
       section?.scrollIntoView({ behavior: "smooth" });
     }
-    setIsOpen(false);
-  };
+  }
+  setIsOpen(false);
+};
+
 
   return (
     <nav className="fixed top-2 left-2 right-2 rounded-2xl z-50 bg-white/10 backdrop-blur-md shadow-md px-4 sm:px-8 md:px-12 py-4">
