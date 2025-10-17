@@ -23,7 +23,7 @@ const Home2 = () => {
         </p>
 
         <div className="flex justify-center mt-4">
-          <Button text="More about me ->" onClick={() => window.location.href = '#'} />
+          <Button text="More about me ->" onClick={() => window.location.href = '#/more-about-me'} />
         </div>        
       </div>
     </section>

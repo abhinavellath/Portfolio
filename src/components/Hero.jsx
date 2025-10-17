@@ -5,6 +5,7 @@ import photo from '../assets/aneeka.jpg';
 const Hero = ({ className }) => {
   return (
     <section
+    id="hero"
   className={`w-full h-screen flex items-center justify-center ${className} px-8 md:px-22`}
 >
 
