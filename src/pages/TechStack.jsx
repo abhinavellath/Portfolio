@@ -61,7 +61,7 @@ const TechStack = () => {
   return (
     <section
       id="techstack"
-      className="w-full min-h-screen flex flex-col items-center justify-center px-4 md:px-16 py-16 relative overflow-hidden bg-[#011d1f]"
+      className="w-full min-h-[600px] flex flex-col items-center justify-center px-4 md:px-16 py-16 relative overflow-hidden"
     >
       <div className="w-full max-w-7xl text-white space-y-10 p-12 rounded-2xl relative z-10">
         <h2 className="text-3xl md:text-5xl font-bold text-cyan-200 text-center font-['PT_Serif']">

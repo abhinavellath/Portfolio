@@ -2,43 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 @import "tailwindcss";
 
-@keyframes slideUp {
-  0% { opacity: 0; transform: translateY(50px); }
-  100% { opacity: 1; transform: translateY(0); }
-}
-.animate-slideUp { 
-  animation: slideUp 1s ease forwards;
-  opacity: 0;
- }
 
-@keyframes slideInLeft {
-  0% { opacity: 0; transform: translateX(-50px); }
-  100% { opacity: 1; transform: translateX(0); }
-}
-.animate-slideInLeft { 
-  animation: slideInLeft 1.2s ease-out forwards;
-  opacity: 0;
-}
-
-/* add delay helper */
-.animation-delay-200 { animation-delay: 1s; }
-.animation-delay-300 { animation-delay: 1.5s; }
-.animation-delay-400 { animation-delay: 2.0s; }
-
-@keyframes fadeInRight {
-  0% {
-    opacity: 0;
-    transform: translateX(80px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-.animate-fadeInRight {
-  animation: fadeInRight 1s ease-out forwards;
-}
 
 
 
@@ -58,4 +22,11 @@ body {
   align-items: center;
 }
 
+.hide-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
 

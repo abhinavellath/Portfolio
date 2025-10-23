@@ -1,32 +1,52 @@
 import React from 'react';
 import Button from '../components/Button.jsx';
+import { motion, useAnimation } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 
 const Home2 = () => {
+  const controls = useAnimation();
+  const [ref, inView] = useInView({
+    threshold: 0.6, // triggers when 30% of the section is visible
+  });
+
+  React.useEffect(() => {
+    if (inView) {
+      controls.start("visible");
+    } else {
+      controls.start("hidden");
+    }
+  }, [controls, inView]);
+
+  const containerVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 1 } },
+    exit: { opacity: 0, y: -50, transition: { duration: 0.8 } },
+  };
+
   return (
-    <section
+    <motion.section
+  ref={ref}
   id="about"
-  className="w-full min-h-screen flex items-center justify-center px-4 sm:px-8 md:px-16 lg:px-24 py-16"
+  className="w-full min-h-[600px] flex items-center justify-center px-4 sm:px-8 md:px-16 lg:px-24 py-16"
+  variants={containerVariants}
+  initial="hidden"
+  animate={controls}
 >
-      <div className=" text-left text-white space-y-6 p-8 rounded-xl shadow-lg">
-        <h2 className="text-4xl md:text-5xl font-bold text-cyan-200 text-center font-['PT_Serif'] ">
+
+      <div className="text-left text-white space-y-6 p-5 rounded-xl">
+        <h2 className="text-5xl md:text-5xl font-bold text-cyan-200 text-center font-['PT_Serif']">
           About Me
         </h2>
-        <p className="text-lg md:text-xl text-gray-200 leading-relaxed">
-          A B.Tech CSE Graduate Engineer with a strong foundation in cloud computing and DevOps practices. 
-          With hands-on experience across cloud, DevOps, automation, monitoring, databases, and frontend development, 
-          I thrive at the intersection of technology and problem-solving. I love taking complex systems and 
-          turning them into efficient, scalable, and reliable solutions that have real impact.
+        <p className="text-xl md:text-3xl text-gray-200 leading-relaxed">
+          I’m Aneeka, a B.Tech Computer Science graduate with a strong foundation in DevOps, Cloud (AWS), Orchestration, and Linux systems. I enjoy understanding how things work under the hood — from containers to infrastructure automation — and applying that knowledge to build efficient, reliable solutions.
         </p>
-        <p className="text-lg md:text-xl text-gray-200 leading-relaxed">
-          Hard launching a remarkable career in Tech is my career goal. I'm welcome to opportunities that provide 
-          a platform for me to learn and grow.
+        <p className="text-lg md:text-3xl text-gray-200 leading-relaxed">
+          Before transitioning into tech, I worked for several years as a freelance content writer, creating clear, engaging, and SEO-optimized content across various domains — an experience that strengthened my communication skills and attention to detail.
         </p>
-
-        <div className="flex justify-center mt-4">
-          <Button text="More about me ->" onClick={() => window.location.href = '#/more-about-me'} />
-        </div>        
+        <p className="text-lg md:text-3xl text-gray-200 leading-relaxed">
+          I’m currently focused on mastering infrastructure automation and scalable deployments, aiming to combine technical depth with problem-solving that delivers real business impact. I believe in learning by doing, and every project I take on reflects that mindset.        </p>       
       </div>
-    </section>
+    </motion.section>
   );
 };
 

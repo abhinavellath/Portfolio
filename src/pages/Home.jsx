@@ -3,6 +3,7 @@ import LightRays from "../components/Background";
 import Hero from "../components/Hero";
 import TechStack from "./TechStack";
 import Home2 from "./Home2";
+import Projects from "./Project";
 
 const Home = () => {
   return (
@@ -26,7 +27,9 @@ const Home = () => {
 
       <Hero className="relative z-10" />
 
-      <Home2 />
+      <Home2 className="relative z-10" />
+
+      <Projects className="relative z-10" />
       <TechStack />
     </div>
   );
