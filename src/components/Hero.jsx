@@ -41,9 +41,9 @@ const Hero = ({ className }) => {
   };
 
   const socials = [
-    { label: "GitHub", link: "https://github.com/yourusername" },
-    { label: "LinkedIn", link: "https://linkedin.com/in/yourusername" },
-    { label: "Twitter", link: "https://twitter.com/yourusername" },
+    { label: "GitHub", link: "https://github.com/AneekaSA" },
+    { label: "LinkedIn", link: "https://www.linkedin.com/in/aneeka-sa/" },
+    { label: "Email", link: "mailto:aneeka.sa@gmail.com" },
   ];
 
   return (

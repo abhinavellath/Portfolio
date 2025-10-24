@@ -5,6 +5,7 @@ import TechStack from "./TechStack";
 import Home2 from "./Home2";
 import Projects from "./Project";
 import ContactForm from "./ContactForm";
+import ExperienceHome from "./ExperienceHome";
 
 const Home = () => {
   return (
@@ -32,6 +33,7 @@ const Home = () => {
 
       <Projects className="relative z-10" />
       <TechStack className="relative z-10" />
+      <ExperienceHome className="relative z-10" />
       <ContactForm className="relative z-10" />
     </div>
   );
