@@ -59,28 +59,45 @@ const TechStack = () => {
     const controls = useAnimation();
     const { ref, inView } = useInView({
         threshold: 0.2,
-        triggerOnce: true,
+        // triggerOnce: true, // REMOVED triggerOnce
     });
 
+    // UPDATED useEffect to handle both entering and leaving view
     useEffect(() => {
         if (inView) {
             controls.start("visible");
+        } else {
+            controls.start("hidden"); // Reset animation when out of view
         }
     }, [controls, inView]);
 
+    // Container variants control overall section fade and stagger for children
     const containerVariants = {
-        hidden: {},
+        // Added opacity here so the entire section fades in/out smoothly
+        hidden: { opacity: 0 },
         visible: {
+            opacity: 1,
             transition: {
-                staggerChildren: 0.08,
+                staggerChildren: 0.03, // --- DECREASED DELAY ---
+                when: "beforeChildren", // Optional: ensures container fades slightly before children
             },
         },
     };
 
     const itemVariants = {
+        // Initial state matches container's hidden state
         hidden: { opacity: 0, scale: 0.8 },
         visible: { opacity: 1, scale: 1, transition: { duration: 0.4, type: "spring", stiffness: 150, damping: 12 } },
     };
+
+    // Button classes remain exactly as you provided in the last version
+    const mobileButtonClass = `py-2.5 px-4 text-xs sm:py-3 sm:px-5 sm:text-sm
+                                 text-center text-gray-200 font-medium border border-white/15 bg-white/5 backdrop-blur-md rounded-lg sm:rounded-xl shadow-lg
+                                 hover:text-cyan-300 hover:bg-white/10 hover:border-cyan-400/50 transform hover:-translate-y-1 transition-all duration-300`;
+
+    const desktopButtonClass = `py-2 px-3 text-xs sm:py-2.5 sm:px-4 sm:text-sm md:py-3 md:px-5 md:text-base
+                                text-gray-200 font-medium border border-white/15 bg-white/5 backdrop-blur-md rounded-lg sm:rounded-xl shadow-lg
+                                hover:text-cyan-300 hover:bg-white/10 hover:border-cyan-400/50 transform hover:-translate-y-1 transition-all duration-300`;
 
     return (
         <section
@@ -88,35 +105,33 @@ const TechStack = () => {
             ref={ref}
             className="w-full flex flex-col items-center justify-center px-4 sm:px-8 md:px-16 py-20 sm:py-24 relative overflow-hidden"
         >
+            {/* Outer motion div controls overall section animation based on inView */}
             <motion.div
+                variants={containerVariants} // Apply variants for overall fade and stagger control
                 initial="hidden"
                 animate={controls}
                 className="w-full max-w-5xl text-white space-y-10 md:space-y-12"
             >
+                {/* Title Animation - uses itemVariants to stagger with buttons */}
                 <motion.h2
-                    variants={{
-                        hidden: { opacity: 0, y: -30 },
-                        visible: { opacity: 1, y: 0, transition: { duration: 0.8 } }
-                    }}
+                    variants={itemVariants} // Changed to itemVariants for staggering
                     className="text-3xl sm:text-4xl md:text-5xl font-bold text-cyan-200 text-center font-['PT_Serif']"
                 >
                     Tech Stack
                 </motion.h2>
 
                 {/* --- Container for Layout Logic --- */}
-                <motion.div variants={containerVariants}>
-
+                {/* No motion variants needed here; children handle their own via itemVariants */}
+                <div>
                     {/* --- Mobile Flex Wrap Layout (hidden on md and up) --- */}
-                    <div className="flex flex-wrap justify-center gap-3 sm:gap-4 md:hidden"> {/* Use flex-wrap and justify-center */}
+                    <div className="flex flex-wrap justify-center gap-3 sm:gap-4 md:hidden">
                         {gridSkills.map((skill) => (
+                            // Apply itemVariants to each button wrapper
                             <motion.div key={skill + "-mobile"} variants={itemVariants}>
                                 <Button
                                     text={skill}
                                     onClick={() => setModalSkill(skill)}
-                                    // Adjusted classes for flex-wrap
-                                    className="py-2.5 px-4 text-xs sm:py-3 sm:px-5 sm:text-sm
-                                               text-center text-gray-200 font-medium border border-white/15 bg-white/5 backdrop-blur-md rounded-lg sm:rounded-xl shadow-lg
-                                               hover:text-cyan-300 hover:bg-white/10 hover:border-cyan-400/50 transform hover:-translate-y-1 transition-all duration-300"
+                                    className={mobileButtonClass} // Use the mobile class
                                 />
                             </motion.div>
                         ))}
@@ -127,20 +142,19 @@ const TechStack = () => {
                         {diamondLayout.map((row, rowIndex) => (
                             <div key={rowIndex} className="flex justify-center flex-wrap gap-2 sm:gap-3 md:gap-4">
                                 {row.map((skill) => (
+                                     // Apply itemVariants to each button wrapper
                                     <motion.div key={skill + "-desktop"} variants={itemVariants}>
                                         <Button
                                             text={skill}
                                             onClick={() => setModalSkill(skill)}
-                                            className="py-2 px-3 text-xs sm:py-2.5 sm:px-4 sm:text-sm md:py-3 md:px-5 md:text-base
-                                                       text-gray-200 font-medium border border-white/15 bg-white/5 backdrop-blur-md rounded-lg sm:rounded-xl shadow-lg
-                                                       hover:text-cyan-300 hover:bg-white/10 hover:border-cyan-400/50 transform hover:-translate-y-1 transition-all duration-300"
+                                            className={desktopButtonClass} // Use the desktop class
                                         />
                                     </motion.div>
                                 ))}
                             </div>
                         ))}
                     </div>
-                </motion.div>
+                </div>
             </motion.div>
 
             {modalSkill && (
@@ -155,4 +169,3 @@ const TechStack = () => {
 };
 
 export default TechStack;
-

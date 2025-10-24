@@ -1,107 +1,154 @@
 // src/pages/ExperienceHome.jsx
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { FaAws, FaNetworkWired } from "react-icons/fa"; // Added icons
+
+// Custom hook for media query
+const useMediaQuery = (query) => {
+  const [matches, setMatches] = useState(() => {
+    if (typeof window !== "undefined") {
+      return window.matchMedia(query).matches;
+    }
+    return false;
+  });
+
+  useEffect(() => {
+    const media = window.matchMedia(query);
+    if (media.matches !== matches) {
+      setMatches(media.matches);
+    }
+    const listener = () => setMatches(media.matches);
+    media.addEventListener("change", listener);
+    return () => media.removeEventListener("change", listener);
+  }, [matches, query]);
+
+  return matches;
+};
 
 const experiences = [
   {
     role: "Cloud DevOps Trainee",
     company: "Cloudnets Solutions",
     period: "Jan 2025 – Present",
-    description: "Gained hands-on experience with AWS and DevOps tools, focusing on building scalable cloud infrastructure and CI/CD pipelines.",
+    description:
+      "Gained hands-on experience with AWS and DevOps tools, focusing on building scalable cloud infrastructure and CI/CD pipelines.",
+    icon: <FaAws className="text-cyan-400 text-lg" />,
   },
   {
     role: "Network Implementation Intern",
     company: "Network Bulls, Delhi",
     period: "Dec 2023",
-    description: "Acquired practical industry experience in network setup, configuration, and troubleshooting in real-world scenarios.",
+    description:
+      "Acquired practical industry experience in network setup, configuration, and troubleshooting in real-world scenarios.",
+    icon: <FaNetworkWired className="text-cyan-400 text-lg" />,
   },
 ];
 
 const TimelineItem = ({ exp, index }) => {
-    const controls = useAnimation();
-    const [ref, inView] = useInView({
-        // triggerOnce is removed to allow animation on every scroll
-        threshold: 0.5,    // Trigger when 50% of the item is visible
-    });
+  const controls = useAnimation();
+  const [ref, inView] = useInView({ threshold: 0.5 });
+  const isDesktop = useMediaQuery("(min-width: 768px)");
 
-    useEffect(() => {
-        if (inView) {
-            controls.start("visible");
-        } else {
-            // Trigger the "hidden" state (exit animation) when out of view
-            controls.start("hidden");
-        }
-    }, [controls, inView]);
+  useEffect(() => {
+    if (inView) controls.start("visible");
+    else controls.start("hidden");
+  }, [controls, inView]);
 
-    const isOdd = index % 2 !== 0;
+  const isOdd = index % 2 !== 0;
 
-    const cardVariants = {
-        hidden: { opacity: 0, x: isOdd ? 100 : -100 },
-        visible: { 
-            opacity: 1, 
-            x: 0, 
-            transition: { duration: 0.6, ease: "easeOut" } 
-        },
-    };
+  const cardVariants = {
+    hidden: {
+      opacity: 0,
+      x: isDesktop ? (isOdd ? 100 : -100) : 100,
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
+  };
 
-    const iconVariants = {
-        hidden: { scale: 0 },
-        visible: { 
-            scale: 1, 
-            transition: { duration: 0.4, ease: "backOut", delay: 0.3 } 
-        },
-    };
+  const iconVariants = {
+    hidden: { scale: 0 },
+    visible: {
+      scale: 1,
+      transition: { duration: 0.4, ease: "backOut", delay: 0.3 },
+    },
+  };
 
-    return (
-        <div ref={ref} className={`flex items-center w-full ${isOdd ? 'flex-row-reverse' : ''}`}>
-            {/* Card Section */}
-            <div className="w-full md:w-1/2 p-4">
-                <motion.div
-                    variants={cardVariants}
-                    initial="hidden"
-                    animate={controls}
-                    className="bg-black/40 rounded-2xl p-6 shadow-lg space-y-3 hover:border-cyan-400/50 border border-transparent transition-all duration-300"
-                >
-                    <h3 className="text-xl md:text-2xl font-bold text-cyan-200">
-                        {exp.role} – {exp.company}
-                    </h3>
-                    <span className="text-gray-400 italic text-sm">{exp.period}</span>
-                    <p className="text-gray-300 text-sm mt-1">{exp.description}</p>
-                </motion.div>
-            </div>
+  return (
+    <div
+      ref={ref}
+      className={`relative w-full md:flex md:items-center ${
+        isOdd ? "md:flex-row-reverse" : ""
+      }`}
+    >
+      {/* --- Icon / Logo Circle (The central anchor) --- */}
+      <motion.div
+        variants={iconVariants}
+        initial="hidden"
+        animate={controls}
+        className="absolute left-4 md:left-1/2 -translate-x-1/2 top-8 md:top-1/2 md:-translate-y-1/2 bg-black w-10 h-10 rounded-full border-2 border-cyan-400 flex items-center justify-center shadow-md z-10"
+      >
+        {exp.icon}
+      </motion.div>
 
-            {/* Icon in the middle */}
-            <div className="w-0 md:w-1/12 flex justify-center relative">
-                 <motion.div 
-                    variants={iconVariants}
-                    initial="hidden"
-                    animate={controls}
-                    // Changed background to black to match the page background
-                    className="absolute left-1/2 -translate-x-1/2 bg-black w-8 h-8 rounded-full border-2 border-cyan-400 flex items-center justify-center"
-                 >
-                    <div className="w-3 h-3 bg-cyan-400 rounded-full"></div>
-                </motion.div>
-            </div>
+      {/* --- Card --- */}
+      <div className={`w-full md:w-1/2 p-4 pl-16 md:p-0 ${isOdd ? 'md:pl-12' : 'md:pr-12'}`}>
+        <motion.div
+          variants={cardVariants}
+          initial="hidden"
+          animate={controls}
+          className={`rounded-2xl p-6 shadow-lg space-y-3 transition-all duration-300 ${
+            isDesktop
+              ? "bg-black/40 hover:border-cyan-400/50 border border-transparent m-6"
+              : "backdrop-blur-lg bg-white/10 hover:border-cyan-400/50 border border-white/10"
+          }`}
+        >
+          <h3 className="text-xl md:text-2xl font-bold text-cyan-200">
+            {exp.role} – {exp.company}
+          </h3>
+          <p className="text-gray-300 text-sm mt-1">{exp.description}</p>
+        </motion.div>
+      </div>
 
-            {/* Spacer for the other side on desktop */}
-            <div className="hidden md:block w-1/2"></div>
-        </div>
-    );
+      {/* --- Date & Spacer Container --- */}
+      <div className="w-full h-full md:w-1/2">
+        <motion.div
+            variants={iconVariants}
+            initial="hidden"
+            animate={controls}
+            // FIX: Changed mobile-specific top position from 'top-8' to 'top-[-1.5rem]'
+            className={`
+              absolute top-[-1.5rem] left-12 text-xs 
+              md:static md:top-auto md:left-auto md:translate-y-0 md:h-full md:text-sm md:flex md:items-center 
+              ${isOdd ? 'md:justify-end md:pr-12' : 'md:justify-start md:pl-12'}
+              text-gray-400 italic
+            `}
+        >
+            {exp.period}
+        </motion.div>
+      </div>
+    </div>
+  );
 };
-
 
 const ExperienceHome = () => {
   return (
-    // Removed bg-[#011d1f] from the section
-    <section id="experience" className="w-full text-white py-24 px-4 md:px-16 overflow-hidden">
-      <h2 className="text-4xl md:text-5xl font-bold text-cyan-300 text-center mb-20 font-['PT_Serif']">
+    <section
+      id="experience"
+      className="w-full text-white py-24 px-4 md:px-16 overflow-hidden"
+    >
+      <h2 className="text-4xl md:text-5xl font-bold text-cyan-300 text-center mb-20 font-Example">
         Experience & Training
       </h2>
 
       <div className="relative max-w-5xl mx-auto">
-        <div className="absolute left-1/2 h-full w-0.5 bg-cyan-400/30 -translate-x-1/2"></div>
-        <div className="space-y-16">
+        {/* Central Line */}
+        <div className="absolute h-full w-0.5 bg-cyan-400/30 left-4 md:left-1/2 md:-translate-x-1/2"></div>
+
+        <div className="space-y-20 md:space-y-16">
           {experiences.map((exp, idx) => (
             <TimelineItem key={idx} exp={exp} index={idx} />
           ))}
