@@ -19,24 +19,23 @@ const Name = ({ name = 'Aneeka' }) => {
   };
 
   return (
-    // Adjusted padding: pt-16 base, md:pt-20, lg:pt-24 for better vertical alignment on different screens
-    // Removed fixed h-full, added flex-1 to allow natural height adjustment within flex parent
-    <div className="text-left space-y-4 flex flex-col justify-center flex-1 pt-16 md:pt-20 lg:pt-24">
-      {/* Small intro - Adjusted text sizes */}
+    // Reverted to original h-full and pt-25 for desktop, added mobile overrides
+    <div className="text-center md:text-left space-y-4 h-full flex flex-col justify-center pt-16 md:pt-25">
+      {/* Small intro - Mobile: text-lg, Desktop: md:text-3xl (Original) */}
       <motion.p
-        className="text-base sm:text-lg md:text-xl lg:text-2xl text-white font-['PT_Serif']" // Smaller base size
+        className="text-lg md:text-3xl text-white font-['PT_Serif']"
         variants={introVariants}
         initial="hidden"
         animate="visible"
       >
         Hey, I’m
-        {/* Adjusted name text size */}
-        <span className="font-semibold text-4xl sm:text-5xl md:text-6xl pl-2 sm:pl-3 md:pl-4 text-cyan-200">{name}</span>
+        {/* Mobile: text-5xl, Desktop: md:text-6xl (Original) */}
+        <span className="font-semibold text-5xl md:text-6xl pl-3 md:pl-4 text-cyan-200">{name}</span>
       </motion.p>
 
-      {/* Role - Adjusted text sizes */}
+      {/* Role - Mobile: text-2xl, Desktop: md:text-4xl (Original) */}
       <motion.p
-        className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-gray-300" // Smaller base size
+        className="text-2xl md:text-4xl text-gray-300"
         variants={roleVariants}
         initial="hidden"
         animate="visible"
@@ -44,9 +43,9 @@ const Name = ({ name = 'Aneeka' }) => {
         DevOps | AWS | Azure
       </motion.p>
 
-      {/* Tagline - Adjusted text sizes and max-width */}
+      {/* Tagline - Mobile: text-2xl, Desktop: md:text-5xl lg:text-6xl (Original) */}
       <motion.p
-        className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl text-gray-400 mt-4 max-w-xs sm:max-w-md md:max-w-lg lg:max-w-2xl xl:max-w-3xl leading-relaxed sm:leading-loose" // Added responsive max-width and leading
+        className="text-2xl md:text-5xl lg:text-6xl text-gray-400 mt-4 max-w-lg mx-auto md:mx-0 md:max-w-3xl leading-relaxed"
         variants={taglineVariants}
         initial="hidden"
         animate="visible"

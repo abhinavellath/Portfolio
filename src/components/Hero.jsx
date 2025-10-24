@@ -10,43 +10,35 @@ const Hero = ({ className }) => {
   // Trigger when 50% of the section is visible
   const [ref, inView] = useInView({
     threshold: 0.5,
-    triggerOnce: false, // Re-trigger animation when scrolling up/down
   });
 
   React.useEffect(() => {
     if (inView) {
       controls.start("visible");
     } else {
-      // Use "hidden" instead of "exit" for re-triggering
-      controls.start("hidden");
+      // Reverting to your original "exit" logic
+      controls.start("exit");
     }
   }, [controls, inView]);
 
-  // Combined text + buttons/socials container variant
-  const leftColumnVariants = {
-    hidden: { opacity: 0, x: -50 },
-    visible: {
-        opacity: 1,
-        x: 0,
-        transition: {
-            duration: 0.8,
-            staggerChildren: 0.2 // Stagger Name parts and buttons/socials
-        }
-    },
+  const textVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 1 } },
+    exit: { opacity: 0, y: -50, transition: { duration: 0.8 } },
   };
-
-  // Individual item variant for staggering
-  const itemVariant = {
-      hidden: { opacity: 0, y: 20 },
-      visible: { opacity: 1, y: 0 }
-  }
-
 
   const photoVariants = {
-    hidden: { opacity: 0, scale: 0.8, y: 50 }, // Added scale and adjusted y
-    visible: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
+    hidden: { opacity: 0, y: 80 },
+    visible: { opacity: 1, y: 0, transition: { duration: 1 } },
+    exit: { opacity: 0, y: -100, transition: { duration: 0.8 } },
   };
 
+  // Buttons + socials animation
+  const buttonsVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, delay: 1 } },
+    exit: { opacity: 0, y: -20, transition: { duration: 0.5 } },
+  };
 
   const socials = [
     { label: "GitHub", link: "https://github.com/yourusername" },
@@ -57,84 +49,73 @@ const Hero = ({ className }) => {
   return (
     <section
       id="hero"
-       // Adjusted min-h-screen for flexibility, increased py
-      className={`w-full min-h-screen flex flex-col justify-center items-center ${className} px-4 sm:px-8 md:px-16 lg:px-24 py-20 md:py-16`}
+      // Reverted to original padding and layout classes
+      className={`w-full h-screen flex flex-col justify-center items-center ${className} px-4 sm:px-8 md:px-16 lg:px-24 py-16`}
       ref={ref}
     >
-      {/* Main flex container */}
-      <div className="flex flex-col md:flex-row w-full max-w-7xl items-center flex-grow"> {/* Added max-w-7xl, items-center, flex-grow */}
-
+      <div className="flex flex-col md:flex-row w-full h-full items-center"> {/* Added items-center for better mobile vertical alignment */}
         {/* Left: Name + Buttons + Socials */}
         <motion.div
-          className="w-full md:w-1/2 flex flex-col justify-center text-left p-4 space-y-6 md:space-y-8 mb-12 md:mb-0" // Added bottom margin for mobile
-          variants={leftColumnVariants}
+          className="w-full md:w-1/2 flex flex-col justify-center text-left p-4 space-y-6"
+          variants={textVariants}
           initial="hidden"
           animate={controls}
-          // Removed exit prop
+          exit="exit"
         >
-          {/* Name component itself doesn't need motion wrapper if children are animated */}
           <Name />
 
-          {/* Buttons + Socials - using itemVariant for staggering */}
+          {/* Buttons + Socials */}
           <motion.div
-            className="flex flex-row items-center gap-3 sm:gap-4 mt-4 flex-wrap" // Slightly smaller gap on smallest screens
-            variants={itemVariant} // Stagger this block
+            // Added justify-center for mobile
+            className="flex flex-row items-center justify-center md:justify-start gap-4 mt-4 flex-wrap"
+            variants={buttonsVariants}
           >
             <a
-              href="/resume.pdf" // Ensure resume.pdf is in the public folder
+              href="/resume.pdf"
               download
-              // Adjusted button styles for responsiveness
-              className="bg-cyan-400 hover:bg-cyan-500 text-black font-semibold py-2 px-3 sm:px-4 text-sm sm:text-base rounded-lg shadow-md transition-colors"
+              // Original desktop styles are preserved
+              className="bg-cyan-400 hover:bg-cyan-500 text-black font-semibold py-2 px-4 rounded shadow-md transition-colors"
             >
               Download Resume
             </a>
-            {/* Contact Me Button */}
-            <motion.a
-                href="#contactme" // Link to the contact section ID
-                // Adjusted button styles for responsiveness
-                className="bg-transparent border border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-black font-semibold py-2 px-3 sm:px-4 text-sm sm:text-base rounded-lg shadow-md transition-colors"
-                // Scroll to section - smooth behavior
-                onClick={(e) => {
+            <a
+              href="#contact"
+              className="bg-transparent border border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-black font-semibold py-2 px-4 rounded shadow-md transition-colors"
+               onClick={(e) => {
                     e.preventDefault();
-                    document.getElementById('contactme')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    document.getElementById('contactme')?.scrollIntoView({ behavior: 'smooth' });
                 }}
             >
-                Contact Me
-            </motion.a>
+              Contact Me
+            </a>
 
-
-            {/* Social Links - using itemVariant */}
-            <div className="flex items-center gap-3 sm:gap-4 flex-wrap"> {/* Wrap socials for better spacing */}
-              {socials.map((social) => (
-                <motion.a
-                  key={social.label}
-                  href={social.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                   // Adjusted styles for responsiveness
-                  className="text-cyan-400 hover:text-cyan-200 font-semibold py-2 text-sm sm:text-base rounded transition-colors"
-                  // whileHover={{ scale: 1.1 }} // Optional: add hover effect
-                >
-                  {social.label}
-                </motion.a>
-              ))}
-            </div>
+            {socials.map((social) => (
+              <a
+                key={social.label}
+                href={social.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-cyan-400 hover:text-cyan-200 font-semibold py-2 rounded transition-colors"
+              >
+                {social.label}
+              </a>
+            ))}
           </motion.div>
         </motion.div>
 
         {/* Right: Photo */}
         <motion.div
-          className="w-full md:w-1/2 flex justify-center items-center" // Removed pt-8 md:pt-0, relying on parent centering
+          className="w-full md:w-1/2 flex justify-center items-center pt-8 md:pt-0"
           variants={photoVariants}
           initial="hidden"
           animate={controls}
-          // Removed exit prop
+          exit="exit"
         >
           <img
             src={photo}
             alt="Profile"
-             // Adjusted image sizes for mobile first
-            className="rounded-xl w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 lg:w-[28rem] lg:h-[28rem] xl:w-[32rem] xl:h-[32rem] object-cover shadow-2xl"
+            // Mobile size: w-64, sm:w-80. Desktop size: md:w-[32rem] (Original)
+            className="rounded-xl w-64 h-64 sm:w-80 sm:h-80 md:w-[32rem] md:h-[32rem] object-cover shadow-2xl"
           />
         </motion.div>
       </div>
