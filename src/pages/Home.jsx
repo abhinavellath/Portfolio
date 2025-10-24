@@ -4,6 +4,7 @@ import Hero from "../components/Hero";
 import TechStack from "./TechStack";
 import Home2 from "./Home2";
 import Projects from "./Project";
+import ContactForm from "./ContactForm";
 
 const Home = () => {
   return (
@@ -30,7 +31,8 @@ const Home = () => {
       <Home2 className="relative z-10" />
 
       <Projects className="relative z-10" />
-      <TechStack />
+      <TechStack className="relative z-10" />
+      <ContactForm className="relative z-10" />
     </div>
   );
 };

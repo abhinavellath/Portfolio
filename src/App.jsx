@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import Projects from "./pages/Projects";
 import Experience from "./pages/Experience";
 import Accomplishments from "./pages/Accomplishments";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/experience" element={<Experience />} />
         <Route path="/accomplishments" element={<Accomplishments />} /> 
       </Routes>
+      <Footer /> {/* Footer now appears on all pages */}
     </Router>
   );
 }

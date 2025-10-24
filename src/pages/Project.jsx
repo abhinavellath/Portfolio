@@ -1,5 +1,7 @@
 import React, { useState, useRef, useEffect, useMemo } from "react";
-import { motion } from "framer-motion";
+// Import motion, useAnimation, and useInView
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 const projects = [
   {
@@ -37,7 +39,6 @@ const projects = [
   {
     title: "Automated Backup Solution",
     description: "Developed Bash scripts for automated, cron-scheduled backups of MySQL databases to AWS S3.",
-    // --- THIS IS THE CORRECTED IMAGE LINK ---
     image: "https://images.unsplash.com/photo-1544890225-2f3faec4446f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
     link: "#",
   },
@@ -47,6 +48,24 @@ const Projects = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const carouselRef = useRef(null);
   const transitionRef = useRef(false);
+
+  // --- Animation Hooks ---
+  const controls = useAnimation();
+  const { ref, inView } = useInView({
+    threshold: 0.2, // Trigger when 20% is visible
+    // triggerOnce: true, // REMOVED triggerOnce to allow re-animation
+  });
+
+  useEffect(() => {
+    if (inView) {
+      controls.start("visible");
+    } else {
+      // ADDED else condition to reset animation when out of view
+      controls.start("hidden");
+    }
+  }, [controls, inView]);
+  // --- End Animation Hooks ---
+
 
   const loopedProjects = useMemo(() => {
     return [projects[projects.length - 1], ...projects, projects[0]];
@@ -71,12 +90,11 @@ const Projects = () => {
     const carousel = carouselRef.current;
     if (!carousel) return;
 
-    // Slow & smooth scroll on wheel
     const onWheel = (e) => {
       e.preventDefault();
       carousel.scrollBy({
-        left: e.deltaY * 0.5, // slower speed (was *2)
-        behavior: "smooth", // smooth easing
+        left: e.deltaY * 0.5,
+        behavior: "smooth",
       });
     };
 
@@ -129,11 +147,28 @@ const Projects = () => {
     scrollToCard(index + 1);
   };
 
+  // --- Animation Variants ---
+  const sectionVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: "easeOut" },
+    },
+  };
+  // --- End Animation Variants ---
+
   return (
-    <section
+    // --- Updated Section Tag ---
+    <motion.section
       id="projects"
+      ref={ref} // Attach ref for intersection observer
+      variants={sectionVariants}
+      initial="hidden" // Start hidden initially
+      animate={controls} // Controlled by useAnimation
       className="w-full min-h-screen flex flex-col items-center justify-center py-16"
     >
+      {/* Title animation can be added separately if desired */}
       <h2 className="text-4xl md:text-5xl font-bold text-cyan-200 mb-12 text-center">
         My Projects
       </h2>
@@ -198,8 +233,10 @@ const Projects = () => {
           />
         ))}
       </div>
-    </section>
+    </motion.section>
+    // --- End Updated Section Tag ---
   );
 };
 
 export default Projects;
+
