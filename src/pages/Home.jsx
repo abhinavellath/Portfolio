@@ -2,7 +2,7 @@
 import LightRays from "../components/Background";
 import Hero from "../components/Hero";
 import TechStack from "./TechStack";
-import Home2 from "./Home2";
+import About from "./About";
 import Projects from "./Project";
 import ContactForm from "./ContactForm";
 import ExperienceHome from "./ExperienceHome";
@@ -29,7 +29,7 @@ const Home = () => {
 
       <Hero className="relative z-10" />
 
-      <Home2 className="relative z-10" />
+      <About className="relative z-10" />
 
       <Projects className="relative z-10" />
       <TechStack className="relative z-10" />

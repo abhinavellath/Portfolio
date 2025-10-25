@@ -50,24 +50,49 @@ const Navbar = () => {
             className="text-white p-2 rounded hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-cyan-400"
           >
             <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <motion.path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                variants={{
-                  closed: { d: "M4 6h16M4 12h16m-7 6h7" },
-                  open: { d: "M6 18L18 6M6 6l12 12" },
-                }}
-                animate={isOpen ? "open" : "closed"}
-                transition={{ duration: 0.3 }}
-              />
-            </svg>
+  className="w-6 h-6"
+  fill="none"
+  stroke="currentColor"
+  viewBox="0 0 24 24"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <motion.path
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    strokeWidth="2"
+    d="M 4 6 L 20 6"
+    variants={{
+      closed: { rotate: 0, y: 0 },
+      open: { rotate: 45, y: 6 },
+    }}
+    animate={isOpen ? "open" : "closed"}
+    transition={{ duration: 0.3 }}
+  />
+  <motion.path
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    strokeWidth="2"
+    d="M 4 12 L 20 12"
+    variants={{
+      closed: { opacity: 1 },
+      open: { opacity: 0 },
+    }}
+    animate={isOpen ? "open" : "closed"}
+    transition={{ duration: 0.15 }}
+  />
+  <motion.path
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    strokeWidth="2"
+    d="M 4 18 L 20 18"
+    variants={{
+      closed: { rotate: 0, y: 0 },
+      open: { rotate: -45, y: -6 },
+    }}
+    animate={isOpen ? "open" : "closed"}
+    transition={{ duration: 0.3 }}
+  />
+</svg>
           </button>
         </div>
 

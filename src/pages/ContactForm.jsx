@@ -49,7 +49,7 @@ const ContactForm = () => {
       <div className="w-full max-w-3xl text-white space-y-8 backdrop-blur-lg bg-white/5 border border-white/10 p-8 md:p-12 rounded-3xl shadow-xl relative z-10">
         <motion.h2
           variants={formItemVariants} // Animate title
-          className="text-4xl md:text-5xl font-bold text-cyan-200 mb-8 text-center font-['PT_Serif']"
+          className="text-3xl md:text-4xl font-bold text-cyan-200 mb-8 text-center font-['PT_Serif']"
         >
           Get In Touch
         </motion.h2>
@@ -97,18 +97,14 @@ const ContactForm = () => {
             ></textarea>
           </motion.div>
 
-          <motion.div variants={formItemVariants}>
-            {/* Using the existing Button component for consistency */}
-            <Button
-              text="Send Message"
-              onClick={() => {}} // onClick is required, but form submit handles action
-              className="w-full py-3 text-white font-semibold border border-cyan-400/50 bg-cyan-500/10 backdrop-blur-md hover:bg-cyan-400 hover:text-black transition-all duration-300"
-            />
-             {/* Fallback standard button in case Button component needs type="submit" */}
-             {/* <button type="submit" className="w-full py-3 px-6 text-black font-semibold bg-cyan-400 rounded-xl shadow-md hover:bg-cyan-500 hover:shadow-lg transform hover:scale-105 transition-all duration-300 ease-in-out">
-                 Send Message
-             </button> */}
-          </motion.div>
+          <motion.div variants={formItemVariants} className="flex justify-center">
+  <Button
+    text="Send Message"
+    onClick={() => {}}
+    className="w-40 py-3 text-white font-semibold border border-cyan-400/50 bg-cyan-500/10 backdrop-blur-md hover:bg-cyan-400 hover:text-black transition-all duration-300"
+  />
+</motion.div>
+
         </motion.form>
       </div>
     </motion.section>

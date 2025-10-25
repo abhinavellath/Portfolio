@@ -149,7 +149,7 @@ const ExperienceHome = () => {
       id="experience"
       className="w-full text-white py-24 px-4 md:px-16 overflow-hidden"
     >
-      <h2 className="text-4xl md:text-5xl font-bold text-cyan-300 text-center mb-20 font-Example">
+      <h2 className="text-3xl md:text-4xl font-bold text-cyan-300 text-center mb-20 font-['PT_Serif']">
         Experience & Training
       </h2>
 

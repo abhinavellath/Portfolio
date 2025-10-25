@@ -3,7 +3,7 @@ import Button from '../components/Button.jsx';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
-const Home2 = () => {
+const About = () => {
   const controls = useAnimation();
   const [ref, inView] = useInView({
     threshold: 0.6, // triggers when 30% of the section is visible
@@ -34,20 +34,20 @@ const Home2 = () => {
 >
 
       <div className="text-left text-white space-y-6 p-5 rounded-xl">
-        <h2 className="text-5xl md:text-5xl font-bold text-cyan-200 text-center font-['PT_Serif']">
+        <h2 className="text-3xl md:text-4xl font-bold text-cyan-200 text-center font-['PT_Serif']">
           About Me
         </h2>
-        <p className="text-xl md:text-3xl text-gray-200 leading-relaxed">
+        <p className="text-sm md:text-xl text-gray-200 leading-relaxed">
           I’m Aneeka, a B.Tech Computer Science graduate with a strong foundation in DevOps, Cloud (AWS), Orchestration, and Linux systems. I enjoy understanding how things work under the hood — from containers to infrastructure automation — and applying that knowledge to build efficient, reliable solutions.
         </p>
-        <p className="text-lg md:text-3xl text-gray-200 leading-relaxed">
+        <p className="text-sm md:text-xl text-gray-200 leading-relaxed">
           Before transitioning into tech, I worked for several years as a freelance content writer, creating clear, engaging, and SEO-optimized content across various domains — an experience that strengthened my communication skills and attention to detail.
         </p>
-        <p className="text-lg md:text-3xl text-gray-200 leading-relaxed">
+        <p className="text-sm md:text-xl text-gray-200 leading-relaxed">
           I’m currently focused on mastering infrastructure automation and scalable deployments, aiming to combine technical depth with problem-solving that delivers real business impact. I believe in learning by doing, and every project I take on reflects that mindset.        </p>       
       </div>
     </motion.section>
   );
 };
 
-export default Home2;
+export default About;
