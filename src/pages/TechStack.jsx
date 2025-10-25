@@ -40,17 +40,31 @@ I have significant experience working with MySQL to design, manage, and optimize
   `,
     "Frontend Development": `
 I enjoy bringing ideas to life through frontend development, turning thoughtful designs into engaging, intuitive user experiences. With Figma, I craft layouts that prioritize clarity and usability, and I bring them to life using HTML and CSS to create interfaces that are not only visually appealing but also fully responsive. Seeing a design transform into a seamless, interactive experience that complements powerful backend and cloud systems is what excites me most about building user interfaces.
+  `,
+    ArgoCD: `
+I have used ArgoCD to implement GitOps for Kubernetes, enabling declarative, automated deployments. I manage application synchronization, monitor health, and handle rollbacks to ensure reliable, consistent updates across environments.
+  `,
+    Helm: `
+I work with Helm to package and deploy Kubernetes applications efficiently. By creating and customizing charts, I can manage application configurations, handle dependencies, and ensure consistent deployments across environments. Using Helm alongside CI/CD pipelines, I streamline updates and rollbacks, making application management more reliable and repeatable.
+  `,
+    "AWS EKS, AWS ECS": `
+I have experience with AWS EKS and ECS for deploying and managing containerized applications. I configure clusters, orchestrate workloads, and ensure scalable, reliable deployments. I am comfortable integrating these services with CI/CD pipelines, monitoring, and cloud infrastructure to streamline application delivery and maintain high availability.
+  `,
+    "OS & System Administration": `
+I have experience in Linux and Windows system administration, managing servers, configuring environments, and troubleshooting issues to ensure reliable and secure operations. I am skilled in monitoring system performance, automating tasks, and maintaining smooth, efficient workflows to ensure maximum efficiency.
   `
 };
 
-// --- Desktop Diamond Layout ---
+// --- FIXED Desktop Layout (Perfect Inverted Pyramid: 7-5-3-1) ---
 const diamondLayout = [
-    ["Jenkins / GitHub Actions", "AWS Native Services", "Ansible", "MySQL", "Frontend Development"],
-    ["Kubernetes & Docker", "Terraform", "Prometheus & Grafana", "Python"],
-    ["AWS Cloud Computing", "Bash Scripting", "Git"]
+    ["AWS Cloud Computing", "AWS Native Services", "AWS EKS, AWS ECS", "Kubernetes & Docker"],
+    ["Prometheus & Grafana", "Jenkins / GitHub Actions", "ArgoCD", "Helm", "Ansible"],
+    ["Git", "Bash Scripting", "MySQL", "Terraform", ],
+    ["Frontend Development", "Python",],
+    ["OS & System Administration"]
 ];
 
-// --- Flat Array for Mobile Layout ---
+// --- Flat Array for Mobile Layout (updates automatically) ---
 const gridSkills = Object.keys(skillDetails);
 
 
@@ -59,10 +73,8 @@ const TechStack = () => {
     const controls = useAnimation();
     const { ref, inView } = useInView({
         threshold: 0.2,
-        // triggerOnce: true, // REMOVED triggerOnce
     });
 
-    // UPDATED useEffect to handle both entering and leaving view
     useEffect(() => {
         if (inView) {
             controls.start("visible");
@@ -71,33 +83,29 @@ const TechStack = () => {
         }
     }, [controls, inView]);
 
-    // Container variants control overall section fade and stagger for children
     const containerVariants = {
-        // Added opacity here so the entire section fades in/out smoothly
         hidden: { opacity: 0 },
         visible: {
             opacity: 1,
             transition: {
-                staggerChildren: 0.03, // --- DECREASED DELAY ---
-                when: "beforeChildren", // Optional: ensures container fades slightly before children
+                staggerChildren: 0.03,
+                when: "beforeChildren",
             },
         },
     };
 
     const itemVariants = {
-        // Initial state matches container's hidden state
         hidden: { opacity: 0, scale: 0.8 },
         visible: { opacity: 1, scale: 1, transition: { duration: 0.4, type: "spring", stiffness: 150, damping: 12 } },
     };
 
-    // Button classes remain exactly as you provided in the last version
     const mobileButtonClass = `py-2.5 px-4 text-xs sm:py-3 sm:px-5 sm:text-sm
-                                 text-center text-gray-200 font-medium border border-white/15 bg-white/5 backdrop-blur-md rounded-lg sm:rounded-xl shadow-lg
-                                 hover:text-cyan-300 hover:bg-white/10 hover:border-cyan-400/50 transform hover:-translate-y-1 transition-all duration-300`;
+                                  text-center text-gray-200 font-medium border border-white/15 bg-white/5 backdrop-blur-md rounded-lg sm:rounded-xl shadow-lg
+                                  hover:text-cyan-300 hover:bg-white/10 hover:border-cyan-400/50 transform hover:-translate-y-1 transition-all duration-300`;
 
     const desktopButtonClass = `py-2 px-3 text-xs sm:py-2.5 sm:px-4 sm:text-sm md:py-3 md:px-5 md:text-base
-                                text-gray-200 font-medium border border-white/15 bg-white/5 backdrop-blur-md rounded-lg sm:rounded-xl shadow-lg
-                                hover:text-cyan-300 hover:bg-white/10 hover:border-cyan-400/50 transform hover:-translate-y-1 transition-all duration-300`;
+                                  text-gray-200 font-medium border border-white/15 bg-white/5 backdrop-blur-md rounded-lg sm:rounded-xl shadow-lg
+                                  hover:text-cyan-300 hover:bg-white/10 hover:border-cyan-400/50 transform hover:-translate-y-1 transition-all duration-300`;
 
     return (
         <section
@@ -105,49 +113,43 @@ const TechStack = () => {
             ref={ref}
             className="w-full flex flex-col items-center justify-center px-4 sm:px-8 md:px-16 py-20 sm:py-24 relative overflow-hidden"
         >
-            {/* Outer motion div controls overall section animation based on inView */}
             <motion.div
-                variants={containerVariants} // Apply variants for overall fade and stagger control
+                variants={containerVariants}
                 initial="hidden"
                 animate={controls}
                 className="w-full max-w-5xl text-white space-y-10 md:space-y-12"
             >
-                {/* Title Animation - uses itemVariants to stagger with buttons */}
                 <motion.h2
-                    variants={itemVariants} // Changed to itemVariants for staggering
+                    variants={itemVariants}
                     className="text-3xl sm:text-4xl md:text-5xl font-bold text-cyan-200 text-center font-['PT_Serif']"
                 >
                     Tech Stack
                 </motion.h2>
 
-                {/* --- Container for Layout Logic --- */}
-                {/* No motion variants needed here; children handle their own via itemVariants */}
                 <div>
-                    {/* --- Mobile Flex Wrap Layout (hidden on md and up) --- */}
+                    {/* --- Mobile Flex Wrap Layout --- */}
                     <div className="flex flex-wrap justify-center gap-3 sm:gap-4 md:hidden">
                         {gridSkills.map((skill) => (
-                            // Apply itemVariants to each button wrapper
                             <motion.div key={skill + "-mobile"} variants={itemVariants}>
                                 <Button
                                     text={skill}
                                     onClick={() => setModalSkill(skill)}
-                                    className={mobileButtonClass} // Use the mobile class
+                                    className={mobileButtonClass}
                                 />
                             </motion.div>
                         ))}
                     </div>
 
-                    {/* --- Desktop Diamond Layout (hidden by default, shown on md and up) --- */}
+                    {/* --- Desktop Diamond Layout --- */}
                     <div className="hidden md:flex flex-col items-center gap-3 sm:gap-4">
                         {diamondLayout.map((row, rowIndex) => (
                             <div key={rowIndex} className="flex justify-center flex-wrap gap-2 sm:gap-3 md:gap-4">
                                 {row.map((skill) => (
-                                     // Apply itemVariants to each button wrapper
                                     <motion.div key={skill + "-desktop"} variants={itemVariants}>
                                         <Button
                                             text={skill}
                                             onClick={() => setModalSkill(skill)}
-                                            className={desktopButtonClass} // Use the desktop class
+                                            className={desktopButtonClass}
                                         />
                                     </motion.div>
                                 ))}

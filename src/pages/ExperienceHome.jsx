@@ -2,7 +2,8 @@
 import React, { useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { FaAws, FaNetworkWired } from "react-icons/fa"; // Added icons
+// Added FaPencilAlt for the new experience
+import { FaAws, FaNetworkWired, FaPencilAlt } from "react-icons/fa";
 
 // Custom hook for media query
 const useMediaQuery = (query) => {
@@ -42,6 +43,15 @@ const experiences = [
     description:
       "Acquired practical industry experience in network setup, configuration, and troubleshooting in real-world scenarios.",
     icon: <FaNetworkWired className="text-cyan-400 text-lg" />,
+  },
+  // --- NEW EXPERIENCE ADDED HERE ---
+  {
+    role: "Freelance Content Writer",
+    company: "Freelance",
+    period: "2020 – 2023",
+    description:
+      "Specializing in both technical and non-technical domains, delivering well-researched, engaging, and audience-focused content across diverse industries.",
+    icon: <FaPencilAlt className="text-cyan-400 text-lg" />,
   },
 ];
 
@@ -119,7 +129,6 @@ const TimelineItem = ({ exp, index }) => {
             variants={iconVariants}
             initial="hidden"
             animate={controls}
-            // FIX: Changed mobile-specific top position from 'top-8' to 'top-[-1.5rem]'
             className={`
               absolute top-[-1.5rem] left-12 text-xs 
               md:static md:top-auto md:left-auto md:translate-y-0 md:h-full md:text-sm md:flex md:items-center 

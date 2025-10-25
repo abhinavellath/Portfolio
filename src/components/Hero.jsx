@@ -71,7 +71,8 @@ const Hero = ({ className }) => {
             variants={buttonsVariants}
           >
             <a
-              href="/resume.pdf"
+              href="https://drive.google.com/file/d/1B77D9TV4QLAZJcVaPHpcutvRVoODm8pe/view?usp=sharing"
+              target="blank"
               download
               // Original desktop styles are preserved
               className="bg-cyan-400 hover:bg-cyan-500 text-black font-semibold py-2 px-4 rounded shadow-md transition-colors"

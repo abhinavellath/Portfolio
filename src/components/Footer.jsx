@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
-// SVG Icon Components remain the same...
+// SVG Icon Components
 const GitHubIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
     <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.91 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
@@ -15,27 +15,27 @@ const LinkedInIcon = () => (
   </svg>
 );
 
-const TwitterIcon = () => (
+// --- NEW: Email Icon ---
+const EmailIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-    <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-.424.727-.666 1.581-.666 2.477 0 1.61.82 3.027 2.067 3.859-.764-.024-1.482-.233-2.11-.583v.06c0 2.247 1.594 4.123 3.703 4.557-.386.105-.793.162-1.217.162-.298 0-.588-.028-.875-.082.589 1.841 2.301 3.182 4.333 3.22-1.583 1.241-3.583 1.982-5.753 1.982-.374 0-.742-.022-1.107-.064 2.042 1.308 4.473 2.078 7.03 2.078 8.429 0 13.025-6.992 12.78-13.313.896-.646 1.674-1.452 2.288-2.37z"/>
+    <path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.107 10-8.107v11.817h-20z"/>
   </svg>
 );
 
 
 const Footer = () => {
+  // --- UPDATED: Replaced Twitter with Email ---
   const socials = [
     { label: "GitHub", link: "https://github.com/yourusername", icon: <GitHubIcon /> },
     { label: "LinkedIn", link: "https://linkedin.com/in/yourusername", icon: <LinkedInIcon /> },
-    { label: "Twitter", link: "https://twitter.com/yourusername", icon: <TwitterIcon /> },
+    { label: "Email", link: "mailto:aneeka.sa@gmail.com", icon: <EmailIcon /> }, 
   ];
 
   const controls = useAnimation();
-  // --- CHANGE 1: Removed `triggerOnce: true` ---
   const [ref, inView] = useInView({
-    threshold: 0.1, 
+    threshold: 0.1,
   });
 
-  // --- CHANGE 2: Added an else condition to reset the animation ---
   useEffect(() => {
     if (inView) {
       controls.start("visible");
@@ -78,7 +78,7 @@ const Footer = () => {
             <motion.a
               key={social.label}
               href={social.link}
-              target="_blank"
+              target={social.label === "Email" ? "_self" : "_blank"} // Open mailto links in the same tab
               rel="noopener noreferrer"
               className="text-gray-300 hover:text-cyan-400 transition-colors duration-300"
               whileHover={{ scale: 1.2, y: -4 }}
