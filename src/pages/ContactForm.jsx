@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Button from "../components/Button";
@@ -6,9 +6,13 @@ import Button from "../components/Button";
 const ContactForm = () => {
   const controls = useAnimation();
   const { ref, inView } = useInView({
-    threshold: 0.3, // Trigger when 30% is visible
-    triggerOnce: false, // Re-animate each time
+    threshold: 0.3,
+    triggerOnce: false,
   });
+
+  // Form state
+  const [formStatus, setFormStatus] = useState("idle"); // idle | submitting | success | error
+  const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
     if (inView) {
@@ -33,13 +37,43 @@ const ContactForm = () => {
   };
 
   const containerVariants = {
-      hidden: {},
-      visible: { transition: { staggerChildren: 0.15 } }
-  }
+    hidden: {},
+    visible: { transition: { staggerChildren: 0.15 } },
+  };
+
+  // Handle form submission manually
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setFormStatus("submitting");
+    setErrorMessage("");
+
+    const formData = new FormData(e.target);
+
+    try {
+      const response = await fetch("https://formspree.io/f/mjkpvggv", {
+        method: "POST",
+        body: formData,
+        headers: {
+          Accept: "application/json",
+        },
+      });
+
+      if (response.ok) {
+        setFormStatus("success");
+        e.target.reset(); // clear form
+      } else {
+        const data = await response.json();
+        throw new Error(data.error || "Something went wrong");
+      }
+    } catch (err) {
+      setFormStatus("error");
+      setErrorMessage(err.message);
+    }
+  };
 
   return (
     <motion.section
-      id="contactme" // Added ID for navbar scrolling
+      id="contactme"
       ref={ref}
       variants={sectionVariants}
       initial="hidden"
@@ -48,21 +82,25 @@ const ContactForm = () => {
     >
       <div className="w-full max-w-3xl text-white space-y-8 backdrop-blur-lg bg-white/5 border border-white/10 p-8 md:p-12 rounded-3xl shadow-xl relative z-10">
         <motion.h2
-          variants={formItemVariants} // Animate title
+          variants={formItemVariants}
           className="text-3xl md:text-4xl font-bold text-cyan-200 mb-8 text-center font-['PT_Serif']"
         >
           Get In Touch
         </motion.h2>
 
-        {/* Apply staggerChildren to the form */}
+        {/* FORM SECTION */}
         <motion.form
           variants={containerVariants}
-          action="https://formspree.io/f/your_form_id" // Replace with your Formspree ID
-          method="POST"
+          onSubmit={handleSubmit}
           className="space-y-6"
         >
           <motion.div variants={formItemVariants}>
-            <label htmlFor="name" className="block text-cyan-100 text-sm font-medium mb-2">Name</label>
+            <label
+              htmlFor="name"
+              className="block text-cyan-100 text-sm font-medium mb-2"
+            >
+              Name
+            </label>
             <input
               type="text"
               id="name"
@@ -74,7 +112,12 @@ const ContactForm = () => {
           </motion.div>
 
           <motion.div variants={formItemVariants}>
-            <label htmlFor="email" className="block text-cyan-100 text-sm font-medium mb-2">Email</label>
+            <label
+              htmlFor="email"
+              className="block text-cyan-100 text-sm font-medium mb-2"
+            >
+              Email
+            </label>
             <input
               type="email"
               id="email"
@@ -86,7 +129,12 @@ const ContactForm = () => {
           </motion.div>
 
           <motion.div variants={formItemVariants}>
-            <label htmlFor="message" className="block text-cyan-100 text-sm font-medium mb-2">Message</label>
+            <label
+              htmlFor="message"
+              className="block text-cyan-100 text-sm font-medium mb-2"
+            >
+              Message
+            </label>
             <textarea
               id="message"
               name="message"
@@ -98,13 +146,43 @@ const ContactForm = () => {
           </motion.div>
 
           <motion.div variants={formItemVariants} className="flex justify-center">
-  <Button
-    text="Send Message"
-    onClick={() => {}}
-    className="w-40 py-3 text-white font-semibold border border-cyan-400/50 bg-cyan-500/10 backdrop-blur-md hover:bg-cyan-400 hover:text-black transition-all duration-300"
-  />
-</motion.div>
+            <Button
+              text={
+                formStatus === "submitting"
+                  ? "Sending..."
+                  : formStatus === "success"
+                  ? "Sent!"
+                  : "Send Message"
+              }
+              type="submit"
+              disabled={formStatus === "submitting"}
+              className={`w-40 py-3 text-white font-semibold border border-cyan-400/50 bg-cyan-500/10 backdrop-blur-md hover:bg-cyan-400 hover:text-black transition-all duration-300 ${
+                formStatus === "success" ? "bg-cyan-400 text-black" : ""
+              }`}
+            />
+          </motion.div>
 
+          {/* SUCCESS MESSAGE */}
+          {formStatus === "success" && (
+            <motion.p
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-center text-green-400 font-medium mt-4"
+            >
+              ✅ Message sent successfully! I’ll get back to you soon.
+            </motion.p>
+          )}
+
+          {/* ERROR MESSAGE */}
+          {formStatus === "error" && (
+            <motion.p
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-center text-red-400 font-medium mt-4"
+            >
+              ❌ Failed to send message: {errorMessage}
+            </motion.p>
+          )}
         </motion.form>
       </div>
     </motion.section>
