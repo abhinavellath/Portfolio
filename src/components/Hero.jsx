@@ -9,7 +9,7 @@ const Hero = ({ className }) => {
 
   // Trigger when 50% of the section is visible
   const [ref, inView] = useInView({
-    threshold: 0.5,
+    threshold: 0.3,
   });
 
   React.useEffect(() => {

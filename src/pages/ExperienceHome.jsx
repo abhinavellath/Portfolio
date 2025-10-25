@@ -46,11 +46,11 @@ const experiences = [
   },
   // --- NEW EXPERIENCE ADDED HERE ---
   {
-    role: "Freelance Content Writer",
-    company: "Freelance",
+      role: "Freelance Content Writer",
+      company: "",
     period: "2020 – 2023",
     description:
-      "Specializing in both technical and non-technical domains, delivering well-researched, engaging, and audience-focused content across diverse industries.",
+      "Delivering well-researched, engaging, and audience-focused content across diverse industries specializing in both technical and non-technical domains.",
     icon: <FaPencilAlt className="text-cyan-400 text-lg" />,
   },
 ];
