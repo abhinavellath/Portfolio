@@ -121,7 +121,7 @@ const TechStack = () => {
             >
                 <motion.h2
                     variants={itemVariants}
-                    className="text-2xl sm:text-3xl md:text-4xl font-bold text-cyan-200 text-center font-['PT_Serif']"
+                    className="sm:text-3xl md:text-4xl font-bold text-cyan-200 text-center font-['PT_Serif']"
                 >
                     Tech Stack
                 </motion.h2>

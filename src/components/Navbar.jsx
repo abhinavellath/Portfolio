@@ -133,7 +133,7 @@ const Navbar = () => {
             exit="closed"
             className="md:hidden mt-3 origin-top"
           >
-            <ul className="flex flex-col space-y-2 text-white font-semibold bg-black/50 backdrop-blur-md rounded-lg p-4 shadow-lg ring-1 ring-white/10">
+            <ul className="flex flex-col space-y-2 text-white  font-semibold bg-black/50 backdrop-blur-md rounded-lg p-4 shadow-lg ring-1 ring-white/10">
               {navItems.map((item) => (
                 <li
                   key={item.id}
