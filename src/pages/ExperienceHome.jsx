@@ -46,8 +46,8 @@ const experiences = [
   },
   // --- NEW EXPERIENCE ADDED HERE ---
   {
-      role: "Freelance Content Writer",
-      company: "",
+      role: "Content Writer",
+      company: "Freelance",
     period: "2020 – 2023",
     description:
       "Delivering well-researched, engaging, and audience-focused content across diverse industries specializing in both technical and non-technical domains.",
