@@ -42,7 +42,7 @@ const experiences = [
     period: "Aug 2024 - Nov 2024",
     description:
       "Built CI/CD pipelines with Jenkins and automated AWS deployments using Git, Maven, and Tomcat for efficient, scalable delivery.",
-    icon: <FaNetworkWired className="text-cyan-400 text-lg" />,
+    icon: <FaAws className="text-cyan-400 text-lg" />,
   },
 ];
 
