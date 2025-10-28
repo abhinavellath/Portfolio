@@ -26,9 +26,9 @@ const EmailIcon = () => (
 const Footer = () => {
   // --- UPDATED: Replaced Twitter with Email ---
   const socials = [
-    { label: "GitHub", link: "https://github.com/AneekaSA", icon: <GitHubIcon /> },
-    { label: "LinkedIn", link: "https://www.linkedin.com/in/aneeka-sa/", icon: <LinkedInIcon /> },
-    { label: "Email", link: "mailto:aneeka.sa@gmail.com", icon: <EmailIcon /> }, 
+    { label: "GitHub", link: "https://github.com/abhinavellath/", icon: <GitHubIcon /> },
+    { label: "LinkedIn", link: "https://www.linkedin.com/in/abhinav-p-kumar/", icon: <LinkedInIcon /> },
+    { label: "Email", link: "mailto:abhinavellath@gmail.com", icon: <EmailIcon /> }, 
   ];
 
   const controls = useAnimation();
@@ -71,7 +71,7 @@ const Footer = () => {
     >
       <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-6">
         <motion.p variants={itemVariants} className="text-gray-400 text-sm">
-          &copy; {new Date().getFullYear()} Aneeka S A. All Rights Reserved.
+          &copy; {new Date().getFullYear()} Abhinav P Kumar. All Rights Reserved.
         </motion.p>
         <motion.div variants={itemVariants} className="flex items-center gap-6">
           {socials.map((social) => (
