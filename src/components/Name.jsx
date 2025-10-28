@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const Name = ({ name = 'Aneeka' }) => {
+const Name = ({ name = 'Abhinav' }) => {
   // Variants for each text element
   const introVariants = {
     hidden: { opacity: 0, x: -50 },
