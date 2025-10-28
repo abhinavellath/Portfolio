@@ -17,6 +17,12 @@ I leverage Terraform to design and automate cloud infrastructure through Infrast
   "Jenkins / GitHub Actions": `
 I have used Jenkins and GitHub Actions to automate software delivery through CI/CD pipelines. I have built workflows that handle code integration, automated testing, and deployment, ensuring applications move smoothly from development to production. I have configured pipelines to work with Docker containers, cloud environments, and version-controlled repositories, reducing manual effort and deployment errors. I have also implemented automated notifications, conditional steps, and parallel jobs to optimize release cycles and improve overall development efficiency.
   `,
+  Python: `
+I'm proficient in using Python for scripting and automation, as well as developing machine learning solutions. I have experience in data preprocessing, model training, and performance visualization using libraries like TensorFlow, OpenCV, and Matplotlib. Alongside ML development, I use Python to automate workflows and enhance overall system efficiency.
+  `,
+  "MySQL": `
+I have significant experience working with MySQL to design, manage, and optimize databases. I write efficient queries, structure data effectively, and ensure data integrity, enabling applications to run reliably and perform efficiently across different environments. I am comfortable working with relational databases to support scalable, high-performance applications.  
+  `,
   "AWS Native Services": `
 I’m proficient in AWS DevOps tools such as ECS, EKS, CodeBuild, CodeDeploy, CodePipeline, CloudFormation, and CloudFront to design and deploy cloud-native applications. I have containerized and orchestrated applications using ECS and EKS, automated builds and deployments with CodeBuild and CodeDeploy, and managed end-to-end workflows through CodePipeline. I have used CloudFormation for repeatable, version-controlled infrastructure provisioning and configured CloudFront distributions for secure, low-latency content delivery. These tools allow me to streamline software delivery, reduce manual effort, and maintain reliable, production-ready environments.
   `,
@@ -24,22 +30,13 @@ I’m proficient in AWS DevOps tools such as ECS, EKS, CodeBuild, CodeDeploy, Co
 I have used Ansible to automate server configuration and application deployment across multiple environments. By creating playbooks and roles, I ensure consistency, reduce manual effort, and maintain reliable, scalable, and repeatable systems that integrate seamlessly with CI/CD pipelines and cloud infrastructure.
   `,
   Git: `
-I have several years of experience using Git to manage code efficiently and maintain version control across projects. By leveraging branching, merging, and pull requests, I ensure collaborative workflows remain organized, code is reliable and traceable, and integration into CI/CD pipelines is seamless.
+I have experience using Git to manage code efficiently and maintain version control across projects. By leveraging branching, merging, and pull requests, I ensure collaborative workflows remain organized, code is reliable and traceable, and integration into CI/CD pipelines is seamless.
   `,
   "Bash Scripting": `
-I have several years of experience using Bash scripting to automate complex workflows and manage Linux systems efficiently. I have written scripts for cron jobs, deployments, and system maintenance, consistently reducing manual effort, preventing errors, and improving operational reliability across multiple environments.
+I have experience using Bash scripting to automate complex workflows and manage Linux systems efficiently. I have written scripts for cron jobs, deployments, and system maintenance, consistently reducing manual effort, preventing errors, and improving operational reliability across multiple environments.
   `,
   "Prometheus & Grafana": `
 I have extensive experience using Prometheus and Grafana to monitor, analyze, and visualize system and application performance. I have implemented custom metrics, alerts, and dashboards that provide real-time insights, enabling rapid issue detection, performance optimization, and reliable, scalable operations across production environments.
-  `,
-  Python: `
-I have leveraged Python to simplify complex tasks and enhance infrastructure efficiency. From automating cloud workflows to developing backend utilities, I use Python to create reliable, reusable solutions that save time and reduce operational overhead.
-  `,
-  "MySQL & MongoDB": `
-I have significant experience working with MySQL and MongoDB to design, manage, and optimize databases. I write efficient queries, structure data effectively, and ensure data integrity, enabling applications to run reliably and perform efficiently across different environments. I am comfortable working with both relational and NoSQL databases to support scalable, high-performance applications.
-  `,
-  "Frontend Development": `
-I enjoy bringing ideas to life through frontend development, turning thoughtful designs into engaging, intuitive user experiences. With Figma, I craft layouts that prioritize clarity and usability, and I bring them to life using HTML and CSS to create interfaces that are not only visually appealing but also fully responsive. Seeing a design transform into a seamless, interactive experience that complements powerful backend and cloud systems is what excites me most about building user interfaces.
   `,
   ArgoCD: `
 I have used ArgoCD to implement GitOps for Kubernetes, enabling declarative, automated deployments. I manage application synchronization, monitor health, and handle rollbacks to ensure reliable, consistent updates across environments.
@@ -53,14 +50,17 @@ I have experience with AWS EKS and ECS for deploying and managing containerized 
   "OS & System Administration": `
 I have experience in Linux and Windows system administration, managing servers, configuring environments, and troubleshooting issues to ensure reliable and secure operations. I am skilled in monitoring system performance, automating tasks, and maintaining smooth, efficient workflows to ensure maximum efficiency.
   `,
+  "Machine Learning (ML)": `
+I have hands-on experience building and training machine learning models using Python, TensorFlow, and OpenCV. In my projects, I collected and preprocessed real-world data, compared model performance, and visualized accuracy metrics using Matplotlib. I focus on building efficient, real-time systems that apply ML for automation and decision-making.
+  `,
 };
 
 // --- FIXED Desktop Layout (Diamond) ---
 const diamondLayout = [
   ["AWS Cloud Computing", "AWS Native Services", "AWS EKS, AWS ECS", "Kubernetes & Docker"],
-  ["Prometheus & Grafana", "Jenkins / GitHub Actions", "ArgoCD", "Helm", "Ansible"],
-  ["Git", "Bash Scripting", "MySQL & MongoDB", "Terraform"],
-  ["Frontend Development", "Python"],
+  ["Jenkins / GitHub Actions", "ArgoCD", "Helm", "Ansible", "Prometheus & Grafana"],
+  ["Git", "Bash Scripting", "MySQL", "Terraform"],
+  ["Python", "Machine Learning (ML)"],
   ["OS & System Administration"],
 ];
 
