@@ -29,29 +29,20 @@ const useMediaQuery = (query) => {
 
 const experiences = [
   {
-    role: "Cloud DevOps Trainee",
+    role: "AWS DevOps Intern",
     company: "Cloudnets Solutions",
     period: "Jan 2025 – Present",
     description:
-      "Gained hands-on experience with AWS and DevOps tools, focusing on building scalable cloud infrastructure and CI/CD pipelines.",
+      "Automated AWS infrastructure and CI/CD with Terraform, Jenkins, Docker, and Kubernetes for secure, scalable deployments.",
     icon: <FaAws className="text-cyan-400 text-lg" />,
   },
   {
-    role: "Network Implementation Intern",
-    company: "Network Bulls, Delhi",
-    period: "Dec 2023",
+    role: "DevOps Intern",
+    company: "Internship Studio",
+    period: "Aug 2024 - Nov 2024",
     description:
-      "Acquired practical industry experience in network setup, configuration, and troubleshooting in real-world scenarios.",
+      "Built CI/CD pipelines with Jenkins and automated AWS deployments using Git, Maven, and Tomcat for efficient, scalable delivery.",
     icon: <FaNetworkWired className="text-cyan-400 text-lg" />,
-  },
-  // --- NEW EXPERIENCE ADDED HERE ---
-  {
-      role: "Content Writer",
-      company: "Freelance",
-    period: "2020 – 2023",
-    description:
-      "Delivering well-researched, engaging, and audience-focused content across diverse industries specializing in both technical and non-technical domains.",
-    icon: <FaPencilAlt className="text-cyan-400 text-lg" />,
   },
 ];
 
