@@ -71,7 +71,7 @@ const Hero = ({ className }) => {
             variants={buttonsVariants}
           >
             <a
-              href="https://drive.google.com/file/d/1B77D9TV4QLAZJcVaPHpcutvRVoODm8pe/view?usp=sharing"
+              href="https://drive.google.com/file/d/1C544D2A5iuaNgsmkxm94scHnlOro2o9f/view?usp=sharing"
               target="blank"
               download
               // Original desktop styles are preserved
