@@ -3,17 +3,7 @@ import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
 const projects = [
-    {
-        title: "MERN Stack Movie App",
-        description:
-            "A full-stack MERN application for personalized movie recommendations, featuring a complete DevSecOps workflow for secure, automated, and observable deployment on AWS EKS.",
-        techStack: [
-            "AWS EKS", "Kubernetes", "Docker", "GitHub Actions", "ArgoCD", "Helm", "Prometheus", "Grafana", "SonarQube", "Trivy",
-        ],
-        image:
-            "https://images.unsplash.com/photo-1574267432553-4b4628081c31?auto=format&fit=crop&w=1470&q=80",
-        link: "https://github.com/AneekaSA/MERN-MovieApp-3-Tier.git",
-    },
+    
     {
         title: "DevSecOps Chat App",
         description:
@@ -23,8 +13,32 @@ const projects = [
         ],
         image:
             "https://images.unsplash.com/photo-1534794048419-48e110dca88e?auto=format&fit=crop&w=1470&q=80",
-        link: "https://github.com/AneekaSA/DevSecOps-chat-app.git",
+        link: "https://github.com/abhinavellath/DevSecOps-chat-app.git",
     },
+
+    {
+        title: "MERN Stack Movie App",
+        description:
+            "A full-stack MERN application for personalized movie recommendations, featuring a complete DevSecOps workflow for secure, automated, and observable deployment on AWS EKS.",
+        techStack: [
+            "AWS EKS", "Kubernetes", "Docker", "GitHub Actions", "ArgoCD", "Helm", "Prometheus", "Grafana", "SonarQube", "Trivy",
+        ],
+        image:
+            "https://images.unsplash.com/photo-1574267432553-4b4628081c31?auto=format&fit=crop&w=1470&q=80",
+        link: "https://github.com/abhinavellath/MERN-MovieApp-3-Tier.git",
+    },
+
+    {
+        title: "Driver Drowsiness Detection and Alert System",
+        description:
+            "Built a Raspberry Pi-based driver drowsiness alert system using facial data and ML algorithms, visualized performance with Matplotlib, and implemented the most accurate model.",
+        techStack: [
+            "Python", "Linux", "Tensorflow",
+        ],
+        image:
+            "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1470&q=80",
+    },
+    
     {
         title: "AWS Cloud Native DevOps",
         description:
@@ -34,19 +48,9 @@ const projects = [
         ],
         image:
             "https://images.unsplash.com/photo-1605379399642-870262d3d051?auto=format&fit=crop&w=1470&q=80",
-        link: "https://github.com/AneekaSA/NodeOps.git",
+        link: "https://github.com/abhinavellath/node.js-app-deploy.git",
     },
-    {
-        title: "Wanderlust Travel Application",
-        description:
-            "A MERN travel blog website demonstrating a full DevSecOps workflow, including CI/CD with Jenkins, security scanning, and Kubernetes deployment with Helm and ArgoCD.",
-        techStack: [
-            "AWS EKS", "MERN", "Docker", "Jenkins", "ArgoCD", "Redis", "Helm", "Prometheus", "Grafana", "SonarQube",
-        ],
-        image:
-            "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1470&q=80",
-        link: "https://github.com/AneekaSA/Wanderlust-Mega-Project.git",
-    },
+    
 ];
 
 const Projects = () => {
