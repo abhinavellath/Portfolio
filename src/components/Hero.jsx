@@ -2,7 +2,7 @@ import React from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Name from "./Name.jsx";
-import photo from "../assets/aneeka.jpg";
+import photo from "../assets/Profile.jpg";
 
 const Hero = ({ className }) => {
   const controls = useAnimation();
@@ -41,9 +41,9 @@ const Hero = ({ className }) => {
   };
 
   const socials = [
-    { label: "GitHub", link: "https://github.com/AneekaSA" },
-    { label: "LinkedIn", link: "https://www.linkedin.com/in/aneeka-sa/" },
-    { label: "Email", link: "mailto:aneeka.sa@gmail.com" },
+    { label: "GitHub", link: "https://github.com/abhinavellath/" },
+    { label: "LinkedIn", link: "https://www.linkedin.com/in/abhinav-p-kumar/" },
+    { label: "Email", link: "mailto:abhinavellath@gmail.com" },
   ];
 
   return (
