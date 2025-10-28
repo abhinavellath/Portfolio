@@ -38,10 +38,7 @@ const About = () => {
           About Me
         </h2>
         <p className="text-sm md:text-xl text-gray-200 leading-relaxed">
-          I’m Aneeka, a B.Tech Computer Science graduate with a strong foundation in DevOps, Cloud (AWS), Orchestration, and Linux systems. I enjoy understanding how things work under the hood — from containers to infrastructure automation — and applying that knowledge to build efficient, reliable solutions.
-        </p>
-        <p className="text-sm md:text-xl text-gray-200 leading-relaxed">
-          Before transitioning into tech, I worked for several years as a freelance content writer, creating clear, engaging, and SEO-optimized content across various domains — an experience that strengthened my communication skills and attention to detail.
+          I’m Abhinav P Kumar, a B.Tech ECE graduate with a strong foundation in DevOps, Cloud (AWS), Orchestration, and Linux systems. I enjoy understanding how things work under the hood — from containers to infrastructure automation — and applying that knowledge to build efficient, reliable solutions.
         </p>
         <p className="text-sm md:text-xl text-gray-200 leading-relaxed">
           I’m currently focused on mastering infrastructure automation and scalable deployments, aiming to combine technical depth with problem-solving that delivers real business impact. I believe in learning by doing, and every project I take on reflects that mindset.        </p>       
