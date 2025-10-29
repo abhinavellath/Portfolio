@@ -14,7 +14,7 @@ const Home = () => {
       <div className="fixed top-0 left-0 w-full h-screen z-0 pointer-events-none">
         <LightRays
           raysOrigin="top-center"
-          raysColor="#00ffff"
+          raysColor="#FF4800"
           raysSpeed={1.5}
           lightSpread={2}
           rayLength={4}
