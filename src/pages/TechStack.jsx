@@ -21,7 +21,7 @@ I have used Jenkins and GitHub Actions to automate software delivery through CI/
 I'm proficient in using Python for scripting and automation, as well as developing machine learning solutions. I have experience in data preprocessing, model training, and performance visualization using libraries like TensorFlow, OpenCV, and Matplotlib. Alongside ML development, I use Python to automate workflows and enhance overall system efficiency.
   `,
   "MySQL": `
-I have significant experience working with MySQL to design, manage, and optimize databases. I write efficient queries, structure data effectively, and ensure data integrity, enabling applications to run reliably and perform efficiently across different environments. I am comfortable working with relational databases to support scalable, high-performance applications.  
+I have significant experience working with MySQL to design, manage, and optimize databases. I write efficient queries, structure data effectively, and ensure data integrity, enabling applications to run reliably and perform efficiently across different environments. I am comfortable working with relational databases to support scalable, high-performance applications.  
   `,
   "AWS Native Services": `
 I’m proficient in AWS DevOps tools such as ECS, EKS, CodeBuild, CodeDeploy, CodePipeline, CloudFormation, and CloudFront to design and deploy cloud-native applications. I have containerized and orchestrated applications using ECS and EKS, automated builds and deployments with CodeBuild and CodeDeploy, and managed end-to-end workflows through CodePipeline. I have used CloudFormation for repeatable, version-controlled infrastructure provisioning and configured CloudFront distributions for secure, low-latency content delivery. These tools allow me to streamline software delivery, reduce manual effort, and maintain reliable, production-ready environments.
@@ -95,11 +95,11 @@ const TechStack = () => {
 
   const mobileButtonClass = `py-2.5 px-4 text-xs sm:py-3 sm:px-5 sm:text-sm
     text-center text-gray-200 font-medium border border-white/15 bg-white/5 backdrop-blur-md rounded-lg sm:rounded-xl shadow-lg
-    hover:text-cyan-300 hover:bg-white/10 hover:border-cyan-400/50 transform hover:-translate-y-1 transition-all duration-300`;
+    hover:text-[#FF4800] hover:bg-white/10 hover:border-[#FF4800]/50 transform hover:-translate-y-1 transition-all duration-300`;
 
   const desktopButtonClass = `py-2 px-3 text-xs sm:py-2.5 sm:px-4 sm:text-sm md:py-3 md:px-5 md:text-base
     text-gray-200 font-medium border border-white/15 bg-white/5 backdrop-blur-md rounded-lg sm:rounded-xl shadow-lg
-    hover:text-cyan-300 hover:bg-white/10 hover:border-cyan-400/50 transform hover:-translate-y-1 transition-all duration-300`;
+    hover:text-[#FF4800] hover:bg-white/10 hover:border-[#FF4800]/50 transform hover:-translate-y-1 transition-all duration-300`;
 
   return (
     <section
@@ -115,7 +115,7 @@ const TechStack = () => {
       >
         <motion.h2
           variants={itemVariants}
-          className="text-3xl md:text-4xl font-bold text-cyan-200 text-center font-['PT_Serif']"
+          className="text-3xl md:text-4xl font-bold text-[#FF4800] text-center font-['PT_Serif']"
         >
           Tech Stack
         </motion.h2>
