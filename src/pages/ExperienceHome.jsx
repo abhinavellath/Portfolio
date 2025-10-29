@@ -139,8 +139,7 @@ const ExperienceHome = () => {
       id="experience"
       className="w-full text-white py-24 px-4 md:px-16 overflow-hidden"
     >
-      <h2 className="text-5xl font-extrabold text-center mb-10 text-orange-500 bg-black/40 px-6 py-2 rounded-2xl shadow-[0_0_25px_rgba(255,100,0,0.6)] backdrop-blur-sm inline-block">
-  Experience
+      <h2 className="text-5xl font-extrabold text-center mb-10 text-orange-500 bg-black/40 px-6 py-2 rounded-2xl shadow-[0_0_25px_rgba(255,100,0,0.6)] backdrop-blur-sm inline-block">Experience
 </h2>
 
       <div className="relative max-w-5xl mx-auto">
