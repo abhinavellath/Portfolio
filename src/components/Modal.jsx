@@ -22,19 +22,19 @@ const Modal = ({ title, content, onClose }) => {
             max-w-2xl 
             w-[90%] 
             bg-gradient-to-br from-[#012226]/90 to-[#001214]/90
-            border border-cyan-400/30 
+            border border-[#FF4800]/30 
             rounded-2xl 
-            shadow-[0_0_25px_rgba(0,255,255,0.25)]
+            shadow-[0_0_25px_rgba(255,72,0,0.25)]
             text-white 
             p-8 
             overflow-hidden
           "
         >
           {/* Shimmer Accent Line */}
-          <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-cyan-400 to-transparent animate-pulse"></div>
+          <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-[#FF4800] to-transparent animate-pulse"></div>
 
           {/* Header */}
-          <h2 className="text-3xl font-bold text-cyan-300 mb-5 text-center font-['PT_Serif']">
+          <h2 className="text-3xl font-bold text-[#FF4800] mb-5 text-center font-['PT_Serif']">
             {title}
           </h2>
 
@@ -54,23 +54,24 @@ const Modal = ({ title, content, onClose }) => {
                 px-6 
                 py-3 
                 font-semibold 
-                text-cyan-300 
-                border border-cyan-400/40 
+                text-[#FF4800] 
+                border border-[#FF4800]/40 
                 rounded-xl 
                 overflow-hidden 
                 transition-all 
                 duration-300 
                 hover:text-black 
-                hover:bg-cyan-400 
-                hover:shadow-[0_0_20px_rgba(0,255,255,0.7)]
+                hover:bg-[#FF4800] 
+                hover:shadow-[0_0_20px_rgba(255,72,0,0.7)]
                 hover:scale-105
+                group
               "
             >
               <span className="relative z-10">Close</span>
               <span
                 className="
                   absolute inset-0 
-                  bg-gradient-to-r from-transparent via-cyan-300/20 to-transparent 
+                  bg-gradient-to-r from-transparent via-[#FF4800]/20 to-transparent 
                   translate-x-[-100%] 
                   group-hover:translate-x-[100%] 
                   transition-transform 
