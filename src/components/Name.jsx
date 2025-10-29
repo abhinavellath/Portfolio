@@ -30,7 +30,7 @@ const Name = ({ name = 'Abhinav' }) => {
       >
         Hey, I’m
         {/* Mobile: text-5xl, Desktop: md:text-6xl (Original) */}
-        <span className="font-semibold text-5xl md:text-6xl pl-3 md:pl-4 text-cyan-200">{name}</span>
+        <span className="font-semibold text-5xl md:text-6xl pl-3 md:pl-4 text-[#FF4800]">{name}</span>
       </motion.p>
 
       {/* Role - Mobile: text-2xl, Desktop: md:text-4xl (Original) */}
