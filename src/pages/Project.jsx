@@ -192,7 +192,7 @@ const Projects = () => {
       animate={controls}
       className="w-full min-h-screen flex flex-col items-center justify-center py-16"
     >
-      <h2 className="text-3xl md:text-4xl font-bold text-[#FF9966] mb-12 text-center font-['PT_Serif']">
+      <h2 className="text-3xl md:text-4xl font-bold text-[#FF4800] mb-12 text-center font-['PT_Serif']">
         My Projects
       </h2>
 
@@ -231,7 +231,7 @@ const Projects = () => {
                   className="w-full h-56 sm:h-64 md:h-72 object-cover"
                 />
                 <div className="p-6 relative z-10">
-                  <h3 className="text-xl md:text-2xl font-bold text-[#FF9966] mb-2">
+                  <h3 className="text-xl md:text-2xl font-bold text-[#FF4800] mb-2">
                     {project.title}
                   </h3>
                   <p className="text-gray-300 text-sm md:text-base mb-4">
@@ -243,7 +243,7 @@ const Projects = () => {
                       {project.techStack.map((tech) => (
                         <span
                           key={tech}
-                          className="bg-[#FF4800]/20 text-[#FF9966] text-xs font-medium px-2.5 py-1 rounded-full"
+                          className="bg-[#FF4800]/20 text-[#FF4800] text-xs font-medium px-2.5 py-1 rounded-full"
                         >
                           {tech}
                         </span>
