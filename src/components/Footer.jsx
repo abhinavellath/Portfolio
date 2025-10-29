@@ -15,45 +15,32 @@ const LinkedInIcon = () => (
   </svg>
 );
 
-// --- NEW: Email Icon ---
 const EmailIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
     <path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.107 10-8.107v11.817h-20z"/>
   </svg>
 );
 
-
 const Footer = () => {
-  // --- UPDATED: Replaced Twitter with Email ---
   const socials = [
     { label: "GitHub", link: "https://github.com/abhinavellath/", icon: <GitHubIcon /> },
     { label: "LinkedIn", link: "https://www.linkedin.com/in/abhinav-p-kumar/", icon: <LinkedInIcon /> },
-    { label: "Email", link: "mailto:abhinavellath@gmail.com", icon: <EmailIcon /> }, 
+    { label: "Email", link: "mailto:abhinavellath@gmail.com", icon: <EmailIcon /> },
   ];
 
   const controls = useAnimation();
-  const [ref, inView] = useInView({
-    threshold: 0.1,
-  });
+  const [ref, inView] = useInView({ threshold: 0.1 });
 
   useEffect(() => {
-    if (inView) {
-      controls.start("visible");
-    } else {
-      controls.start("hidden"); // Reset when it goes out of view
-    }
+    if (inView) controls.start("visible");
+    else controls.start("hidden");
   }, [controls, inView]);
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+  const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   const footerContainerVariants = {
     hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.2 },
-    },
+    visible: { opacity: 1, transition: { staggerChildren: 0.2 } },
   };
 
   const itemVariants = {
@@ -67,35 +54,40 @@ const Footer = () => {
       variants={footerContainerVariants}
       initial="hidden"
       animate={controls}
-      className="w-full text-white p-6 mt-16 bg-black/20 backdrop-blur-lg border-t border-t-cyan-400/20 shadow-[0_-5px_15px_-5px_rgba(0,255,255,0.1)]"
+      className="w-full text-white p-6 mt-16 bg-black/20 backdrop-blur-lg border-t border-t-[#FF4800]/20 shadow-[0_-5px_15px_-5px_rgba(255,72,0,0.1)]"
     >
       <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-6">
         <motion.p variants={itemVariants} className="text-gray-400 text-sm">
           &copy; {new Date().getFullYear()} Abhinav P Kumar. All Rights Reserved.
         </motion.p>
+
         <motion.div variants={itemVariants} className="flex items-center gap-6">
           {socials.map((social) => (
             <motion.a
               key={social.label}
               href={social.link}
-              target={social.label === "Email" ? "_self" : "_blank"} // Open mailto links in the same tab
+              target={social.label === "Email" ? "_self" : "_blank"}
               rel="noopener noreferrer"
-              className="text-gray-300 hover:text-cyan-400 transition-colors duration-300"
+              className="text-gray-300 hover:text-[#FF4800] transition-colors duration-300"
               whileHover={{ scale: 1.2, y: -4 }}
             >
               {social.icon}
             </motion.a>
           ))}
         </motion.div>
+
         <motion.button
           variants={itemVariants}
           onClick={scrollToTop}
-          className="text-gray-300 hover:text-cyan-400 font-semibold transition-colors duration-300 flex items-center gap-2"
+          className="text-gray-300 hover:text-[#FF4800] font-semibold transition-colors duration-300 flex items-center gap-2"
           whileHover={{ scale: 1.05 }}
         >
           Back to Top
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-            <path fillRule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/>
+            <path
+              fillRule="evenodd"
+              d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"
+            />
           </svg>
         </motion.button>
       </div>
