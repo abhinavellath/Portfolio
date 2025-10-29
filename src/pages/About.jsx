@@ -34,7 +34,7 @@ const About = () => {
 >
 
       <div className="text-justify text-white space-y-6 p-5 rounded-xl">
-        <h2 className="text-3xl md:text-4xl font-bold text-cyan-200 text-center font-['PT_Serif']">
+        <h2 className="text-3xl md:text-4xl font-bold text-[#FF4800] text-center font-['PT_Serif']">
           About Me
         </h2>
         <p className="text-sm md:text-xl text-gray-200 leading-relaxed">
