@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-// Added FaPencilAlt for the new experience
 import { FaAws, FaNetworkWired, FaPencilAlt } from "react-icons/fa";
 
 // Custom hook for media query
@@ -34,7 +33,7 @@ const experiences = [
     period: "Jan 2025 – Present",
     description:
       "Automated AWS infrastructure and CI/CD with Terraform, Jenkins, Docker, and Kubernetes for secure, scalable deployments.",
-    icon: <FaAws className="text-cyan-400 text-lg" />,
+    icon: <FaAws className="text-[#FF4800] text-lg" />,
   },
   {
     role: "DevOps Intern",
@@ -42,7 +41,7 @@ const experiences = [
     period: "Aug 2024 - Nov 2024",
     description:
       "Built CI/CD pipelines with Jenkins and automated AWS deployments using Git, Maven, and Tomcat for efficient, scalable delivery.",
-    icon: <FaAws className="text-cyan-400 text-lg" />,
+    icon: <FaAws className="text-[#FF4800] text-lg" />,
   },
 ];
 
@@ -90,7 +89,7 @@ const TimelineItem = ({ exp, index }) => {
         variants={iconVariants}
         initial="hidden"
         animate={controls}
-        className="absolute left-4 md:left-1/2 -translate-x-1/2 top-8 md:top-1/2 md:-translate-y-1/2 bg-black w-10 h-10 rounded-full border-2 border-cyan-400 flex items-center justify-center shadow-md z-10"
+        className="absolute left-4 md:left-1/2 -translate-x-1/2 top-8 md:top-1/2 md:-translate-y-1/2 bg-black w-10 h-10 rounded-full border-2 border-[#FF4800] flex items-center justify-center shadow-md z-10"
       >
         {exp.icon}
       </motion.div>
@@ -103,11 +102,11 @@ const TimelineItem = ({ exp, index }) => {
           animate={controls}
           className={`rounded-2xl p-6 shadow-lg space-y-3 transition-all duration-300 ${
             isDesktop
-              ? "bg-black/40 hover:border-cyan-400/50 border border-transparent m-6"
-              : "backdrop-blur-lg bg-white/10 hover:border-cyan-400/50 border border-white/10"
+              ? "bg-black/40 hover:border-[#FF4800]/50 border border-transparent m-6"
+              : "backdrop-blur-lg bg-white/10 hover:border-[#FF4800]/50 border border-white/10"
           }`}
         >
-          <h3 className="text-xl md:text-2xl font-bold text-cyan-200">
+          <h3 className="text-xl md:text-2xl font-bold text-[#FF4800]">
             {exp.role} – {exp.company}
           </h3>
           <p className="text-gray-300 text-sm mt-1">{exp.description}</p>
@@ -140,13 +139,13 @@ const ExperienceHome = () => {
       id="experience"
       className="w-full text-white py-24 px-4 md:px-16 overflow-hidden"
     >
-      <h2 className="text-3xl md:text-4xl font-bold text-cyan-300 text-center mb-20 font-['PT_Serif']">
+      <h2 className="text-3xl md:text-4xl font-bold text-[#FF4800] text-center mb-20 font-['PT_Serif']">
         Experience & Training
       </h2>
 
       <div className="relative max-w-5xl mx-auto">
         {/* Central Line */}
-        <div className="absolute h-full w-0.5 bg-cyan-400/30 left-4 md:left-1/2 md:-translate-x-1/2"></div>
+        <div className="absolute h-full w-0.5 bg-[#FF4800]/30 left-4 md:left-1/2 md:-translate-x-1/2"></div>
 
         <div className="space-y-20 md:space-y-16">
           {experiences.map((exp, idx) => (
