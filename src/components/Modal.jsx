@@ -5,7 +5,7 @@ const Modal = ({ title, content, onClose }) => {
   return (
     <AnimatePresence>
       <motion.div
-        className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50"
+        className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
@@ -21,17 +21,20 @@ const Modal = ({ title, content, onClose }) => {
             relative 
             max-w-2xl 
             w-[90%] 
-            bg-gradient-to-br from-[#012226]/90 to-[#001214]/90
-            border border-[#FF4800]/30 
+            bg-gradient-to-br from-[#0a0a0a]/95 via-[#121212]/90 to-[#1a1a1a]/95
+            border border-[#FF4800]/25 
             rounded-2xl 
-            shadow-[0_0_25px_rgba(255,72,0,0.25)]
+            shadow-[0_0_30px_rgba(255,72,0,0.2)]
             text-white 
             p-8 
             overflow-hidden
           "
         >
-          {/* Shimmer Accent Line */}
+          {/* Glossy Accent Line */}
           <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-[#FF4800] to-transparent animate-pulse"></div>
+
+          {/* Subtle Gloss Reflection */}
+          <div className="absolute inset-0 bg-gradient-to-t from-transparent via-white/5 to-transparent rounded-2xl pointer-events-none"></div>
 
           {/* Header */}
           <h2 className="text-3xl font-bold text-[#FF4800] mb-5 text-center font-['PT_Serif']">
