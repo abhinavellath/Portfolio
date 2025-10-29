@@ -18,12 +18,12 @@ const Button = ({ text = "", onClick }) => {
         duration-300 
         ease-out 
         border 
-        border-cyan-400/40 
-        shadow-[0_0_10px_rgba(0,255,255,0.2)]
-        hover:shadow-[0_0_25px_rgba(0,255,255,0.6)]
-        hover:border-cyan-400
-        hover:text-cyan-300
-        bg-gradient-to-r from-cyan-500/10 via-transparent to-cyan-500/10
+        border-[#FF4800]/40 
+        shadow-[0_0_10px_rgba(255,72,0,0.2)]
+        hover:shadow-[0_0_25px_rgba(255,72,0,0.6)]
+        hover:border-[#FF4800]
+        hover:text-[#FF4800]
+        bg-gradient-to-r from-[#FF4800]/10 via-transparent to-[#FF4800]/10
         backdrop-blur-sm
         hover:scale-105
       "
@@ -37,7 +37,7 @@ const Button = ({ text = "", onClick }) => {
           h-full 
           bg-gradient-to-r 
           from-transparent 
-          via-cyan-400/30 
+          via-[#FF4800]/30 
           to-transparent 
           translate-x-[-100%] 
           group-hover:translate-x-[100%] 
