@@ -76,7 +76,7 @@ const Navbar = () => {
         <div className="md:hidden z-10">
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="text-white p-2 rounded hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-cyan-400"
+            className="text-white p-2 rounded hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-[#FF4800]"
           >
             <svg
               className="w-6 h-6"
@@ -133,8 +133,8 @@ const Navbar = () => {
                 key={item.id}
                 className={`cursor-pointer capitalize text-sm px-3 py-1.5 rounded-full transition-all duration-300 ${
                   activeSection === item.id
-                    ? "bg-cyan-400/20 text-cyan-300 shadow-[0_0_8px_rgba(0,255,255,0.3)]"
-                    : "hover:text-cyan-400"
+                    ? "bg-[#FF4800]/20 text-[#FF4800] shadow-[0_0_8px_rgba(255,72,0,0.3)]"
+                    : "hover:text-[#FF4800]"
                 }`}
                 onClick={() => handleNavClick(item.id)}
               >
@@ -147,8 +147,8 @@ const Navbar = () => {
           <div
             className={`ml-auto cursor-pointer font-semibold capitalize text-sm px-4 py-1.5 rounded-full border transition-all duration-300 ${
               activeSection === contactItem.id
-                ? "bg-cyan-400/20 border-cyan-300 text-cyan-300 shadow-[0_0_8px_rgba(0,255,255,0.3)]"
-                : "text-white border-cyan-400/30 hover:text-cyan-300 hover:bg-cyan-500/10"
+                ? "bg-[#FF4800]/20 border-[#FF4800] text-[#FF4800] shadow-[0_0_8px_rgba(255,72,0,0.3)]"
+                : "text-white border-[#FF4800]/30 hover:text-[#FF4800] hover:bg-[#FF4800]/10"
             }`}
             onClick={() => handleNavClick(contactItem.id)}
           >
@@ -174,8 +174,8 @@ const Navbar = () => {
                   key={item.id}
                   className={`cursor-pointer capitalize py-2 px-3 rounded transition-all duration-300 ${
                     activeSection === item.id
-                      ? "bg-cyan-400/20 text-cyan-300 shadow-[0_0_8px_rgba(0,255,255,0.3)]"
-                      : "hover:bg-white/10 hover:text-cyan-400"
+                      ? "bg-[#FF4800]/20 text-[#FF4800] shadow-[0_0_8px_rgba(255,72,0,0.3)]"
+                      : "hover:bg-white/10 hover:text-[#FF4800]"
                   }`}
                   onClick={() => handleNavClick(item.id)}
                 >
@@ -185,8 +185,8 @@ const Navbar = () => {
               <li
                 className={`cursor-pointer capitalize py-2 px-3 rounded border-t border-white/10 pt-3 transition-all duration-300 ${
                   activeSection === contactItem.id
-                    ? "bg-cyan-400/20 text-cyan-300 shadow-[0_0_8px_rgba(0,255,255,0.3)]"
-                    : "hover:bg-white/10 hover:text-cyan-400"
+                    ? "bg-[#FF4800]/20 text-[#FF4800] shadow-[0_0_8px_rgba(255,72,0,0.3)]"
+                    : "hover:bg-white/10 hover:text-[#FF4800]"
                 }`}
                 onClick={() => handleNavClick(contactItem.id)}
               >
