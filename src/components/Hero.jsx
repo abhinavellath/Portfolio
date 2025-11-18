@@ -67,7 +67,7 @@ const Hero = ({ className }) => {
             variants={buttonsVariants}
           >
             <a
-              href="https://drive.google.com/file/d/1C544D2A5iuaNgsmkxm94scHnlOro2o9f/view?usp=sharing"
+              href="https://drive.google.com/file/d/14O2OFpCBaDrqgq_TcvpdLVOZL0alJtz6/view?usp=sharing"
               target="blank"
               download
               className="bg-[#FF4800] hover:bg-[#e63e00] text-black font-semibold py-2 px-4 rounded shadow-md transition-colors"
