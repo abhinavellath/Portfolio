@@ -28,9 +28,17 @@ const useMediaQuery = (query) => {
 
 const experiences = [
   {
+    role: "DevOps Intern",
+    company: "CloudZenia",
+    period: "Jan 2026 – Present",
+    description:
+      "Implemented AWS Ccoud services and various cloud based optimizations for clients thereby reducing client costs.",
+    icon: <FaAws className="text-[#FF4800] text-lg" />,
+  },
+  {
     role: "AWS DevOps Intern",
     company: "Cloudnets Solutions",
-    period: "Jan 2025 – Present",
+    period: "Jan 2025 – Nov 2025",
     description:
       "Automated AWS infrastructure and CI/CD with Terraform, Jenkins, Docker, and Kubernetes for secure, scalable deployments.",
     icon: <FaAws className="text-[#FF4800] text-lg" />,
