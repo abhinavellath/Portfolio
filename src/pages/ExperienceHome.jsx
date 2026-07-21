@@ -28,7 +28,7 @@ const useMediaQuery = (query) => {
 
 const experiences = [
   {
-    role: "DevOps Intern",
+    role: "DevOps Engineer",
     company: "CloudZenia",
     period: "Jan 2026 – Present",
     description:
